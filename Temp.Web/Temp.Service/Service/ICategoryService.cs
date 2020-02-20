@@ -33,7 +33,7 @@ namespace Temp.Service.Service
         /// <param name="id"></param>
         /// <returns></returns>
         CategoryDto GetById(int id);
-            
-        
+
+        List<Category> GetAllCategories();
     }
 }

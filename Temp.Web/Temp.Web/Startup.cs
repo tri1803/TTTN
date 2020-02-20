@@ -57,12 +57,14 @@ namespace Temp.Web
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<INsxService, NsxService>();
+            services.AddScoped<IProductService, ProductService>();
 
             //mapper
             services.AddAutoMapper(typeof(UserMapping));
             services.AddAutoMapper(typeof(CategoryMapping));
             services.AddAutoMapper(typeof(NsxMapping));
             services.AddAutoMapper(typeof(RoleMapping));
+            services.AddAutoMapper(typeof(ProductMapping));
 
             //authentication
             services.AddAuthentication(options =>

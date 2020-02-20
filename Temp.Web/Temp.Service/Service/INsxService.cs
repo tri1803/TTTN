@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Temp.DataAccess.Data;
 using Temp.Service.DTO;
 
 namespace Temp.Service.Service
@@ -29,5 +30,7 @@ namespace Temp.Service.Service
         /// <param name="id"></param>
         /// <returns></returns>
         NsxDto GetById(int id);
+
+        List<Nsx> GetAllNsxes();
     }
 }

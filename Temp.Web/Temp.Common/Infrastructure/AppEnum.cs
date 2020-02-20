@@ -20,4 +20,10 @@
         Reject = 2,
         Approve = 3
     }
+
+    public enum Status
+    {
+        Active = 0,
+        InActive = 1
+    }
 }

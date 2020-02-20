@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Temp.DataAccess.Data;
 using Temp.Service.BaseService;
@@ -36,6 +37,11 @@ namespace Temp.Service.Service
         {
             var nsx = _unitofWork.NsxBaseService.GetById(id);
             return _mapper.Map<Nsx, NsxDto>(nsx);
+        }
+
+        public List<Nsx> GetAllNsxes()
+        {
+            return _unitofWork.NsxBaseService.ObjectContext.ToList();
         }
 
         public void Save(NsxDto nsxDto)

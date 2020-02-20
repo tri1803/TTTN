@@ -3,6 +3,8 @@ using AutoMapper;
 using Temp.DataAccess.Data;
 using Temp.Service.BaseService;
 using Temp.Service.DTO;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Temp.Service.Service
 {
@@ -75,6 +77,11 @@ namespace Temp.Service.Service
         {
             var cate = _unitofWork.CategoryBaseService.GetById(id);
             return _mapper.Map<Category, CategoryDto>(cate);
+        }
+
+        public List<Category> GetAllCategories()
+        {
+            return _unitofWork.CategoryBaseService.ObjectContext.ToList();
         }
     }
 }
