@@ -1,0 +1,33 @@
+2020-02-20 09:47:51.987 +07:00 [ERR] Tài khoản hoặc mật khẩu không đúng
+2020-02-20 09:48:24.532 +07:00 [ERR] Tài khoản hoặc mật khẩu không đúng
+2020-02-20 09:48:28.085 +07:00 [ERR] Tài khoản hoặc mật khẩu không đúng
+2020-02-20 10:10:27.874 +07:00 [ERR] An unhandled exception has occurred while executing the request.
+System.IO.DirectoryNotFoundException: Could not find a part of the path '/home/local/3SI/tri.nv/Desktop/Temp.Web/Temp.Web/wwwroot/img/363df8f2-c05e-4184-a87f-39906fffff3a.jpg'.
+   at Interop.ThrowExceptionForIoErrno(ErrorInfo errorInfo, String path, Boolean isDirectory, Func`2 errorRewriter)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String path, OpenFlags flags, Int32 mode)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode)
+   at Temp.Service.Service.UserService.Save(CreateUserDto userDto, IFormFile Avatar) in /home/local/3SI/tri.nv/Desktop/Temp.Web/Temp.Service/Service/UserService.cs:line 61
+   at Temp.Web.Controllers.UserController.Save(CreateUserDto userDto) in /home/local/3SI/tri.nv/Desktop/Temp.Web/Temp.Web/Controllers/UserController.cs:line 82
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Temp.Web.Infacestructure.Middlewares.NotPermissionMiddleware.Invoke(HttpContext context) in /home/local/3SI/tri.nv/Desktop/Temp.Web/Temp.Web/Infacestructure/Middlewares/NotPermissionMiddleware.cs:line 25
+   at Temp.Web.Infacestructure.Middlewares.NotFoundMiddleware.Invoke(HttpContext context) in /home/local/3SI/tri.nv/Desktop/Temp.Web/Temp.Web/Infacestructure/Middlewares/NotFoundMiddleware.cs:line 31
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
