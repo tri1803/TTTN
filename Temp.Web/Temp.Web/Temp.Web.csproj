@@ -30,10 +30,22 @@
     <_ContentIncludedByDefault Remove="wwwroot\lib\datatables\images\sort_desc_disabled.png" />
     <_ContentIncludedByDefault Remove="wwwroot\lib\datatables\js\dataTables.bootstrap4.min.js" />
     <_ContentIncludedByDefault Remove="wwwroot\lib\datatables\js\jquery.dataTables.min.js" />
-    <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
-    <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\img" />
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\page\css\plugins\fonts\slick.svg" />
+    <None Include="wwwroot\page\fonts\Material-Design-Iconic-Font.svg" />
+    <None Include="wwwroot\page\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\page\fonts\themify.svg" />
+    <None Include="wwwroot\page\js\bootstrap.min.js" />
+    <None Include="wwwroot\page\js\main.js" />
+    <None Include="wwwroot\page\js\owl.carousel.min.js" />
+    <None Include="wwwroot\page\js\plugins.js" />
+    <None Include="wwwroot\page\js\slick.min.js" />
+    <None Include="wwwroot\page\js\vendor\jquery-1.12.0.min.js" />
+    <None Include="wwwroot\page\js\vendor\modernizr-2.8.3.min.js" />
+    <None Include="wwwroot\page\js\waypoints.min.js" />
   </ItemGroup>
 </Project>

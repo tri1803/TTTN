@@ -13,6 +13,8 @@ namespace Temp.Service.Mapper
             CreateMap<CreateProductDto, Product>();
             
             CreateMap<Product, CreateProductDto>();
+
+            CreateMap<Product, ProductViewModel>();
         }
     }
 }

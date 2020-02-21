@@ -80,19 +80,19 @@ namespace Temp.Web.Controllers
         public IActionResult Save(CreateUserDto userDto) 
         {
             _userService.Save(userDto, userDto.Avatar);
-            
-            var roles = _roleService.GetAllRole();
-            if (userDto.Id <= 0)
-            {
-                var viewInsert = new CreateUserDto
-               {
-                   Roles = roles
-                };
-                return RedirectToAction("Index", "User");
-            }
-            var viewEdit = _userService.GetUserEditById(userDto.Id);
-            viewEdit.Roles = roles;
-            return View(viewEdit);
+            return RedirectToAction("Index", "User");
+            //var roles = _roleService.GetAllRole();
+            //if (userDto.Id <= 0)
+            //{
+            //    var viewInsert = new CreateUserDto
+            //   {
+            //       Roles = roles
+            //    };
+                
+            //}
+            //var viewEdit = _userService.GetUserEditById(userDto.Id);
+            //viewEdit.Roles = roles;
+            //return View(viewEdit);
 
         }
 

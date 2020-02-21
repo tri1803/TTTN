@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Temp.DataAccess;
 using Temp.Service.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Logging;
@@ -21,8 +20,6 @@ using Temp.Web.Infacestructure.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.Extensions.FileProviders;
-using System.IO;
 
 namespace Temp.Web
 {
@@ -58,6 +55,7 @@ namespace Temp.Web
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<INsxService, NsxService>();
             services.AddScoped<IProductService, ProductService>();
+            
 
             //mapper
             services.AddAutoMapper(typeof(UserMapping));

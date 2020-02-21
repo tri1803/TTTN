@@ -33,5 +33,7 @@ namespace Temp.Service.Service
         Product GetById(int id);
 
         CreateProductDto GetProductEditById(int id);
+
+        List<ProductViewModel> GetProductNews_10();
     }
 }

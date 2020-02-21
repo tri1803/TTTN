@@ -68,7 +68,9 @@ namespace Temp.Service.Service
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var product = _unitofWork.ProductBaseService.GetById(id);
+            _unitofWork.ProductBaseService.Delete(product);
+            _unitofWork.Save();
         }
 
         public Product GetById(int id)
@@ -80,6 +82,12 @@ namespace Temp.Service.Service
         {
             var product = _unitofWork.ProductBaseService.GetById(id);
             return _mapper.Map<Product, CreateProductDto>(product);
+        }
+
+        public List<ProductViewModel> GetProductNews_10()
+        {
+            var products = _unitofWork.ProductBaseService.ObjectContext.OrderByDescending(s => s.CreateDate).Take(10).ToList();
+            return _mapper.Map<List<Product>, List<ProductViewModel>>(products);
         }
     }
 }

@@ -64,5 +64,11 @@ namespace Temp.Web.Controllers
             //viewEdit.Roles = roles;
             //return View(viewEdit);
         }
+
+        public IActionResult Delete(int id)
+        {
+            _productService.Delete(id);
+            return RedirectToAction("Index", "Product");
+        }
     }
 }

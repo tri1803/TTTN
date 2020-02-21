@@ -15,67 +15,81 @@
                     <form asp-action="Save" method="post" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="Id" />
-                        <div class="form-group">
-                            <label asp-for="Name" class="control-label"></label>
-                            <input asp-for="Name" class="form-control" />
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Amount" class="control-label"></label>
-                            <input asp-for="Amount" class="form-control"/>
-                            <span asp-validation-for="Amount" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Price" class="control-label"></label>
-                            <input asp-for="Price" class="form-control" />
-                            <span asp-validation-for="Price" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Desc" class="control-label"></label>
-                            <input asp-for="Desc" class="form-control" />
-                            <span asp-validation-for="Desc" class="text-danger"></span>
-                        </div>
-                       
-                        
-                        <div class="form-group">
-                            <label class="control-label">Category</label>
-                            <select class="form-control form-control-md" asp-for="CategoryId">
-                                @foreach (var item in Model.Categories)
-                                {
-                                    <option value="@item.Id">@item.Name</option>
-                                }
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Amount" class="control-label"></label>
+                                    <input asp-for="Amount" class="form-control" />
+                                    <span asp-validation-for="Amount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Price" class="control-label"></label>
+                                    <input asp-for="Price" class="form-control" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Desc" class="control-label"></label>
+                                    <input asp-for="Desc" class="form-control" />
+                                    <span asp-validation-for="Desc" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Category</label>
+                                    <select class="form-control form-control-md" asp-for="CategoryId">
+                                        @foreach (var item in Model.Categories)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
 
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Nsx</label>
-                            <select class="form-control form-control-md" asp-for="NsxId">
-                                @foreach (var item in Model.Nsxes)
-                                {
-                                    <option value="@item.Id">@item.Name</option>
-                                }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Nsx</label>
+                                    <select class="form-control form-control-md" asp-for="NsxId">
+                                        @foreach (var item in Model.Nsxes)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
 
-                            </select>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            @if (Model.Id != 0)
-                            {
-                                <img src="~/img/@(Model.Avatar)" width="200px" height="200px" />
-                                <p>Path:@Model.Avatar</p>
-                            }
+
+
+                            <img src="~/img/@(Model.Avatar)" width="200px" height="200px" id="blah"/>
+                            <p>Path:@Model.Avatar</p>
+
 
                             <label asp-for="AvataPath" class="control-sm-2"></label>
-                            <input asp-for="AvataPath" class="form-control" type="file" required />
+                            <input asp-for="AvataPath" class="form-control-file" type="file" required id="imgInp"/>
 
 
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-2">
                                 <input type="submit" value="Save" class="btn btn-primary btn-block" />
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-2">
                                 <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Return</a>
                             </div>
+                            <div class="form-group col-md-8"></div>
                         </div>
 
                     </form>
@@ -84,3 +98,24 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function readURL(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+    $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+    }
+    }
+
+    $("#imgInp").change(function() {
+    readURL(this);
+    });
+    </script>
+
+}
