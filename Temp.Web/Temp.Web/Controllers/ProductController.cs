@@ -75,5 +75,17 @@ namespace Temp.Web.Controllers
             return RedirectToAction("Index", "Product");
         }
 
+        public IActionResult Active(int id)
+        {
+            _productService.Active(id);
+            return RedirectToAction("Index", "Product");
+        }
+
+        public IActionResult InActive(int id)
+        {
+            _productService.InActive(id);
+            return RedirectToAction("Index", "Product");
+        }
+
     }
 }

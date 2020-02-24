@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\lib\ckeditor\plugins\smiley\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\page\css\plugins\fonts\slick.svg" />

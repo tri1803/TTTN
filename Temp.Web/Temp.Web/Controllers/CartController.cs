@@ -48,6 +48,15 @@ namespace Temp.Web.Controllers {
             return RedirectToAction("Index", "Cart");
         }
 
+        public IActionResult Update(int id, CartItemDto cartItem)
+        {
+            List<CartItemDto> cart = SessionHelper.GetObjectFromJson<List<CartItemDto>>(HttpContext.Session, "cart");
+            int index = isExist(id);
+            cart[index].Amount += cartItem.Amount;
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            return RedirectToAction("Index", "Cart");
+        }
+
         public IActionResult Delete(int id)
         {
             List<CartItemDto> cart = SessionHelper.GetObjectFromJson<List<CartItemDto>>(HttpContext.Session, "cart");

@@ -39,5 +39,11 @@ namespace Temp.Service.Service
         List<ProductViewModel> Get10Phukien();
 
         List<CreateProductDto> GetProductWithCate(int id);
+
+        void Active(int id);
+
+        void InActive(int id);
+
+        List<ProductViewModel> GetProductInactive();
     }
 }

@@ -103,5 +103,25 @@ namespace Temp.Service.Service
             var products = _unitofWork.ProductBaseService.ObjectContext.Where(s => s.CategoryId == id).Include(s => s.Category).ToList();
             return _mapper.Map<List<Product>, List<CreateProductDto>>(products);
         }
+
+        public void Active(int id)
+        {
+            var product = _unitofWork.ProductBaseService.GetById(id);
+            product.ProductType = (int)ProductType.Active;
+            _unitofWork.Save();
+        }
+
+        public void InActive(int id)
+        {
+            var product = _unitofWork.ProductBaseService.GetById(id);
+            product.ProductType = (int)ProductType.InActive;
+            _unitofWork.Save();
+        }
+
+        public List<ProductViewModel> GetProductInactive()
+        {
+            var products = _unitofWork.ProductBaseService.ObjectContext.Where(s => s.ProductType == (int)ProductType.InActive).Include(s => s.Category).Take(10).ToList();
+            return _mapper.Map<List<Product>, List<ProductViewModel>>(products);
+        }
     }
 }

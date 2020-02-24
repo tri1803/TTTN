@@ -64,7 +64,7 @@
                             <span class="rat__qun">(Based on 0 Ratings)</span>
                         </div>
                         <div class="pro__details">
-                            <p>@Model.Desc </p>
+                            @Model.Desc 
                         </div>
                         <ul class="pro__dtl__prize">
                             
@@ -93,7 +93,7 @@
                             
                         </div>
                         <ul class="pro__dtl__btn">
-                            <li class="buy__now__btn"><a href="#">Mua ngay</a></li>
+                            <li class="buy__now__btn"><a asp-route-id="@Model.Id" asp-controller="cart" asp-action="Add">Mua ngay</a></li>
                            
                         </ul>
                         <div class="pro__social__share">

@@ -27,7 +27,7 @@ namespace Temp.Web.Controllers
             ViewBag.MenuCate = _categoryService.GetAllCategories();
             ViewBag.NewProduct = _productService.GetProductNews_10();
             ViewBag.phukien = _productService.Get10Phukien();
-            
+            ViewBag.productInActive = _productService.GetProductInactive();
             return View();
         }
 
@@ -42,7 +42,6 @@ namespace Temp.Web.Controllers
             var products = _productService.GetProductWithCate(id);
             return View(products);
         }
-
         
     }
 }
