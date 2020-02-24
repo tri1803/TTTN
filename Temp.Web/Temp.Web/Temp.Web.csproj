@@ -49,4 +49,9 @@
     <None Include="wwwroot\page\js\vendor\modernizr-2.8.3.min.js" />
     <None Include="wwwroot\page\js\waypoints.min.js" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CKEditor.NET, Version=3.6.4.0, Culture=neutral, PublicKeyToken=e379cdf2f8354999">
+      <HintPath>..\..\..\CkEditor42Example\Bin\CKEditor.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
