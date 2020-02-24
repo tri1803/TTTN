@@ -76,14 +76,8 @@ namespace Temp.Service.Service
             var user = _unitofWork.UserBaseService.ObjectContext.Include(s => s.Role).FirstOrDefault(s => s.Username == passDto.UserName);
             
             if (user == null) return false;
-            var userUpdate = new User
-            {
-                Username = user.Username,
-                Id = user.Id,
-                Password = passDto.Password,
-                RoleId = user.Id
-            };
-            _unitofWork.UserBaseService.Update(userUpdate);
+            user.Password = passDto.Password;            
+            _unitofWork.UserBaseService.Update(user);
             _unitofWork.Save();
             return true;
         }
