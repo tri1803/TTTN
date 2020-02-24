@@ -27,8 +27,7 @@
     <!-- Responsive css -->
     <link rel="stylesheet" href="~/page/css/responsive.css">
     <!-- User style -->
-    <link rel="stylesheet" href="~/page/css/custom.css">
-
+    <link rel="stylesheet" href="~/page/css/custom.css">  
 
     <!-- Modernizr JS -->
     <script src="~/page/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -48,7 +47,7 @@
                     <div class="row">
                         <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
                             <div class="logo">
-                                <a href="index.html">
+                                <a asp-action="Home" asp-controller="Home">
                                     <h1>TComputer</h1>
                                 </a>
                             </div>
@@ -69,10 +68,31 @@
                         <!-- End MAinmenu Ares -->
                         <div class="col-md-2 col-sm-4 col-xs-3">
                             <ul class="menu-extra">
-                                <li class="search search__open hidden-xs"><span class="ti-search"></span></li>
-                                <li><a href="login-register.html"><span class="ti-user"></span></a></li>
+                                @if (Context.User.Identity.Name == null)
+                                {
+                                    <li><a asp-controller="Account" asp-action="Login"><span class="ti-user"></span></a></li>
+                                }
+                                else
+                                {
+                                    <li class="dropdown">
+                                        <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="far fa-user"></i>
+                                            <span class="ti-user"></span>
+                                            Hi @Context.User.Identity.Name
+
+                                        </a>
+                                        <div class="dropdown-menu " aria-labelledby="navbarDropdownProfile">
+
+
+                                            <a class="dropdown-item btn btn-outline-danger" href="@Url.Action("LogOut","Account")">Đăng xuất</a>
+                                            <a class="dropdown-item btn btn-outline-danger" href="">Thay đổi mật khẩu</a>
+                                        </div>
+                                    </li>
+                                }
+
+
                                 <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
-                                <li class="toggle__menu hidden-xs hidden-sm"><span class="ti-menu"></span></li>
+
                             </ul>
                         </div>
                     </div>

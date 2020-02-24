@@ -19,6 +19,7 @@ namespace Temp.Service.BaseService
         private IBaseService<Image> _ImageBaseService;
         private IBaseService<Nsx> _NsxBaseService;
         private IBaseService<Sale> _saleBaseService;
+        private IBaseService<Customer> _customerBaseService;
 
         private readonly DataContext _dataContext;
 
@@ -65,6 +66,9 @@ namespace Temp.Service.BaseService
 
         public IBaseService<Sale> SaleBaseService => _saleBaseService =
                     _saleBaseService ?? new BaseService<Sale>(_dataContext);
+
+        public IBaseService<Customer> CustomerBaseService => _customerBaseService =
+                    _customerBaseService ?? new BaseService<Customer>(_dataContext);
 
         /// <summary>
         /// save change

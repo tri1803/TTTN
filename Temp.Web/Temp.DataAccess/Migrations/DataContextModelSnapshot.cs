@@ -25,13 +25,13 @@ namespace Temp.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("TotalMoney");
+                    b.Property<int>("CartDetailId");
 
-                    b.Property<int>("UserId");
+                    b.Property<int>("Status");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
+                    b.HasIndex("CartDetailId")
                         .IsUnique();
 
                     b.ToTable("Cart");
@@ -45,18 +45,20 @@ namespace Temp.DataAccess.Migrations
 
                     b.Property<int?>("Amount");
 
-                    b.Property<int>("CartId");
-
                     b.Property<int?>("Price");
 
                     b.Property<int>("ProductId");
 
-                    b.HasKey("Id");
+                    b.Property<int>("Status");
 
-                    b.HasIndex("CartId");
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId")
                         .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("CartDetail");
                 });
@@ -97,6 +99,25 @@ namespace Temp.DataAccess.Migrations
                         .IsUnique();
 
                     b.ToTable("Comment");
+                });
+
+            modelBuilder.Entity("Temp.DataAccess.Data.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("Phone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Temp.DataAccess.Data.Image", b =>
@@ -160,7 +181,7 @@ namespace Temp.DataAccess.Migrations
 
                     b.Property<int?>("Price");
 
-                    b.Property<int?>("SaleId");
+                    b.Property<int>("ProductType");
 
                     b.Property<int?>("Status");
 
@@ -169,8 +190,6 @@ namespace Temp.DataAccess.Migrations
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("NsxId");
-
-                    b.HasIndex("SaleId");
 
                     b.ToTable("Products");
                 });
@@ -202,11 +221,16 @@ namespace Temp.DataAccess.Migrations
 
                     b.Property<DateTime?>("EndDate");
 
-                    b.Property<int?>("Percent");
+                    b.Property<int?>("PriceNow");
+
+                    b.Property<int?>("PriceOld");
 
                     b.Property<int>("ProductId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId")
+                        .IsUnique();
 
                     b.ToTable("Sale");
                 });
@@ -252,22 +276,22 @@ namespace Temp.DataAccess.Migrations
 
             modelBuilder.Entity("Temp.DataAccess.Data.Cart", b =>
                 {
-                    b.HasOne("Temp.DataAccess.Data.User", "User")
+                    b.HasOne("Temp.DataAccess.Data.CartDetail", "CartDetail")
                         .WithOne("Cart")
-                        .HasForeignKey("Temp.DataAccess.Data.Cart", "UserId")
+                        .HasForeignKey("Temp.DataAccess.Data.Cart", "CartDetailId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Temp.DataAccess.Data.CartDetail", b =>
                 {
-                    b.HasOne("Temp.DataAccess.Data.Cart", "Cart")
-                        .WithMany("CartDetails")
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Temp.DataAccess.Data.Product", "Product")
                         .WithOne("CartDetail")
                         .HasForeignKey("Temp.DataAccess.Data.CartDetail", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Temp.DataAccess.Data.User", "User")
+                        .WithMany("CartDetails")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -303,10 +327,14 @@ namespace Temp.DataAccess.Migrations
                         .WithMany("Products")
                         .HasForeignKey("NsxId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.HasOne("Temp.DataAccess.Data.Sale", "Sale")
-                        .WithMany("Products")
-                        .HasForeignKey("SaleId");
+            modelBuilder.Entity("Temp.DataAccess.Data.Sale", b =>
+                {
+                    b.HasOne("Temp.DataAccess.Data.Product", "Product")
+                        .WithOne("Sale")
+                        .HasForeignKey("Temp.DataAccess.Data.Sale", "ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Temp.DataAccess.Data.User", b =>

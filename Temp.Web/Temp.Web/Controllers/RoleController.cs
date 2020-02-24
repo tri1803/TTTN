@@ -6,6 +6,7 @@ using Temp.Service.DTO;
 
 namespace Temp.Web.Controllers
 {
+    [Authorize]
     public class RoleController : Controller
     {
         private readonly IRoleService _roleService;

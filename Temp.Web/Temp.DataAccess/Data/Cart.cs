@@ -8,12 +8,10 @@ namespace Temp.DataAccess.Data
     {
         public int Id { get; set; }
 
-        public int UserId { get; set; }
+        public int Status { get; set; }
 
-        public int? TotalMoney { get; set; }
+        public int CartDetailId { get; set; }
 
-        public User User { get; set; }
-
-        public ICollection<CartDetail> CartDetails { get; set; }
+        public CartDetail CartDetail { get; set; }
     }
 }

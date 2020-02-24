@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Temp.Service.DTO;
 using Temp.Service.Service;
 
 namespace Temp.Web.Controllers
 {
+    [Authorize]
     public class NsxController : Controller
     {
         private readonly INsxService _nsxService;

@@ -39,6 +39,8 @@ namespace Temp.Service.DTO
 
         public int NsxId { get; set; }
 
+        public int ProductType { get; set; }
+
         public IFormFile AvataPath { get; set; }
 
         public DateTime? CreateDate { get; set; }

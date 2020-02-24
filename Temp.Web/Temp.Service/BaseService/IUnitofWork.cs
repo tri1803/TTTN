@@ -40,6 +40,8 @@ namespace Temp.Service.BaseService
 
         IBaseService<Sale> SaleBaseService { get; }
 
+        IBaseService<Customer> CustomerBaseService { get; }
+
         /// <summary>
         /// save
         /// </summary>

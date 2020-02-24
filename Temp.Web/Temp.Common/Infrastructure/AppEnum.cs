@@ -26,4 +26,11 @@
         Active = 0,
         InActive = 1
     }
+
+    public enum ProductType 
+    {
+        Active = 0,
+        InActive = 1
+    }
+
 }

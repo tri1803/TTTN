@@ -1,0 +1,114 @@
+﻿@model CreateProductDto
+@{
+    ViewData["Title"] = "DetailProduct";
+    Layout = "_Layout";
+}
+
+    <section class="htc__product__details pt--120 pb--100 bg__white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                    <div class="product__details__container">
+
+                        <div class="product__big__images">
+                            <div class="portfolio-full-image tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active product-video-position" id="img-tab-1">
+                                    <img src="~/img/@Model.Avatar" alt="full-image" style="width: 350px; margin-left: 100px">
+                                    <div class="product-video">
+                                        @*<a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
+                                            <i class="zmdi zmdi-videocam"></i> View Video
+                                        </a>*@
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-2">
+                                    @*<img src="images/product-details/big-img/12.jpg" alt="full-image">
+                                    <div class="product-video">
+                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
+                                            <i class="zmdi zmdi-videocam"></i> View Video
+                                        </a>
+                                    </div>*@
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-3">
+                                    @*<img src="images/product-details/big-img/11.jpg" alt="full-image">
+                                    <div class="product-video">
+                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
+                                            <i class="zmdi zmdi-videocam"></i> View Video
+                                        </a>
+                                    </div>*@
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-4">
+                                    @*<img src="images/product-details/big-img/12.jpg" alt="full-image">
+                                    <div class="product-video">
+                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
+                                            <i class="zmdi zmdi-videocam"></i> View Video
+                                        </a>
+                                    </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
+                    <div class="htc__product__details__inner">
+                        <div class="pro__detl__title">
+                            <h2>@Model.Name</h2>
+                        </div>
+                        <div class="pro__dtl__rating">
+                            @*<ul class="pro__rating">
+                                <li><span class="ti-star"></span></li>
+                                <li><span class="ti-star"></span></li>
+                                <li><span class="ti-star"></span></li>
+                                <li><span class="ti-star"></span></li>
+                                <li><span class="ti-star"></span></li>
+                            </ul>*@
+                            <span class="rat__qun">(Based on 0 Ratings)</span>
+                        </div>
+                        <div class="pro__details">
+                            <p>@Model.Desc </p>
+                        </div>
+                        <ul class="pro__dtl__prize">
+                            
+                            <li>$@Model.Price</li>
+                        </ul>
+                        @*<div class="pro__dtl__color">
+                            <h2 class="title__5">Choose Colour</h2>
+                            <ul class="pro__choose__color">
+                                <li class="red"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
+                                <li class="blue"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
+                                <li class="perpal"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
+                                <li class="yellow"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
+                            </ul>
+                        </div>*@
+                        @*<div class="pro__dtl__size">
+                            <h2 class="title__5">Size</h2>
+                            <ul class="pro__choose__size">
+                                <li><a href="#">xl</a></li>
+                                <li><a href="#">m</a></li>
+                                <li><a href="#">ml</a></li>
+                                <li><a href="#">lm</a></li>
+                                <li><a href="#">xxl</a></li>
+                            </ul>
+                        </div>*@
+                        <div class="product-action-wrap">
+                            
+                        </div>
+                        <ul class="pro__dtl__btn">
+                            <li class="buy__now__btn"><a href="#">Mua ngay</a></li>
+                           
+                        </ul>
+                        <div class="pro__social__share">
+                            <h2>Share :</h2>
+                            <ul class="pro__soaial__link">
+                                <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
+                                <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+

@@ -17,8 +17,10 @@ namespace Temp.DataAccess.Data
 
         public DateTime? EndDate { get; set; }
 
-        public int? Percent { get; set; }
+        public int? PriceOld { get; set; }
 
-        public ICollection<Product> Products { get; set; }
+        public int? PriceNow { get; set; }
+
+        public Product Product { get; set; }
     }
 }

@@ -1,20 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Temp.Service.DTO;
 using Temp.Service.Service;
 
 namespace Temp.Web.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
         private readonly INsxService _nsxService;
+        private readonly ISaleService _saleService;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, INsxService nsxService)
+        public ProductController(IProductService productService, ICategoryService categoryService, INsxService nsxService, ISaleService saleService)
         {
             _productService = productService;
             _categoryService = categoryService;
             _nsxService = nsxService;
+            _saleService = saleService;
         }
         
         // GET
@@ -70,5 +74,6 @@ namespace Temp.Web.Controllers
             _productService.Delete(id);
             return RedirectToAction("Index", "Product");
         }
+
     }
 }

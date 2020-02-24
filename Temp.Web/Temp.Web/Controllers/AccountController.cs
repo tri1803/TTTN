@@ -62,7 +62,14 @@ namespace Temp.Web.Controllers
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "Admin");
+                if(user.RoleId == (int)Role.Admin || user.RoleId == (int)Role.Manager)
+                {
+                    return RedirectToAction("Index", "Admin");
+                } else
+                {
+                    return RedirectToAction("Home", "Home");
+                }
+                
 
             }  else
             {
@@ -80,7 +87,7 @@ namespace Temp.Web.Controllers
         {
             Response.Cookies.Delete(ClaimTypes.Name);
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("LogIn","Account");
+            return RedirectToAction("Home","Home");
         }
         
         /// <summary>

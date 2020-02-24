@@ -55,6 +55,7 @@ namespace Temp.Web
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<INsxService, NsxService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ISaleService, SaleService>();
             
 
             //mapper
@@ -63,6 +64,7 @@ namespace Temp.Web
             services.AddAutoMapper(typeof(NsxMapping));
             services.AddAutoMapper(typeof(RoleMapping));
             services.AddAutoMapper(typeof(ProductMapping));
+            services.AddAutoMapper(typeof(SaleMapping));
 
             //authentication
             services.AddAuthentication(options =>
@@ -78,7 +80,6 @@ namespace Temp.Web
             
             services.AddSession(options =>
             {
-                options.Cookie.Name = Constants.AppSession;
                 options.IdleTimeout = TimeSpan.FromMinutes(Convert.ToDouble(Configuration[Constants.Settings.ExpiredSessionTime] ?? "60"));
             });
 
@@ -144,7 +145,7 @@ namespace Temp.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Account}/{action=LogIn}/{id?}");
+                    template: "{controller=Home}/{action=Home}/{id?}");
             });
         }
     }

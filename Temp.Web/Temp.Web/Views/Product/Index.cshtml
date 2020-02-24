@@ -23,7 +23,7 @@
                         <th>Price</th>
                         <th>Category</th>
                         <th>Nsx</th>
-                        <th>Create Date</th>
+                        
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -38,12 +38,13 @@
                             <td>@item.Price</td>
                             <td>@item.Category.Name</td>
                             <td>@item.Nsx.Name</td>
-                            <td>@item.CreateDate</td>
+                            
                             
                             <td>
                                 <a asp-action="Save" asp-route-id="@item.Id" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
                                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Are you sure to delete this record?')"><i class="fas fa-times"></i></a>
                                 <a class="btn btn-success"><i class="far fa-images"></i></a>
+                                
                             </td>
                         </tr>
                     }

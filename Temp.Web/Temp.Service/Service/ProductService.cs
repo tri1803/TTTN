@@ -51,6 +51,7 @@ namespace Temp.Service.Service
                 product.Avatar = filename;
                 product.CreateDate = DateTime.Now;
                 product.Status = (int) Status.Active;
+                product.ProductType = (int)Common.Infrastructure.ProductType.Active;
                 _unitofWork.ProductBaseService.Add(product);
                 _unitofWork.Save();
             }
@@ -60,6 +61,7 @@ namespace Temp.Service.Service
                 product.Avatar = filename;
                 product.CreateDate = DateTime.Now;
                 product.Status = (int) Status.Active;
+                product.ProductType = (int)Common.Infrastructure.ProductType.Active;
                 _unitofWork.ProductBaseService.Update(product);
                 _unitofWork.Save();
             }
@@ -75,7 +77,7 @@ namespace Temp.Service.Service
 
         public Product GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return _unitofWork.ProductBaseService.GetById(id);
         }
 
         public CreateProductDto GetProductEditById(int id)
@@ -86,8 +88,20 @@ namespace Temp.Service.Service
 
         public List<ProductViewModel> GetProductNews_10()
         {
-            var products = _unitofWork.ProductBaseService.ObjectContext.OrderByDescending(s => s.CreateDate).Take(10).ToList();
+            var products = _unitofWork.ProductBaseService.ObjectContext.Include(s => s.Category).Where(s => s.Category.Name != "Phụ kiện khác").OrderByDescending(s => s.CreateDate).Take(10).ToList();
             return _mapper.Map<List<Product>, List<ProductViewModel>>(products);
+        }
+
+        public List<ProductViewModel> Get10Phukien()
+        {
+            var products = _unitofWork.ProductBaseService.ObjectContext.Include(s => s.Category).Where(s => s.Category.Name == "Phụ kiện khác").OrderByDescending(s => s.CreateDate).Take(10).ToList();
+            return _mapper.Map<List<Product>, List<ProductViewModel>>(products);
+        }
+
+        public List<CreateProductDto> GetProductWithCate(int id)
+        {
+            var products = _unitofWork.ProductBaseService.ObjectContext.Where(s => s.CategoryId == id).Include(s => s.Category).ToList();
+            return _mapper.Map<List<Product>, List<CreateProductDto>>(products);
         }
     }
 }

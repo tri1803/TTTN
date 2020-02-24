@@ -4,7 +4,6 @@ using Temp.DataAccess.Data;
 using Temp.Service.BaseService;
 using Temp.Service.DTO;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace Temp.Service.Service
 {
@@ -81,7 +80,8 @@ namespace Temp.Service.Service
 
         public List<Category> GetAllCategories()
         {
-            return _unitofWork.CategoryBaseService.ObjectContext.ToList();
+            var result =  _unitofWork.CategoryBaseService.ObjectContext.ToList();
+            return result;
         }
     }
 }

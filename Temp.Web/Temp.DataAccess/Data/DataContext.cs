@@ -27,6 +27,8 @@ namespace Temp.DataAccess.Data
 
         public DbSet<User> Sales { get; set; }
 
+        public DbSet<Customer> Customers { get; set; }
+
         public DataContext(DbContextOptions<DataContext> options) : base(options) {}
     }
 }
