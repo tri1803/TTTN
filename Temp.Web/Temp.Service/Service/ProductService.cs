@@ -77,7 +77,7 @@ namespace Temp.Service.Service
 
         public Product GetById(int id)
         {
-            return _unitofWork.ProductBaseService.GetById(id);
+            return _unitofWork.ProductBaseService.ObjectContext.FirstOrDefault(s => s.Id == id);
         }
 
         public CreateProductDto GetProductEditById(int id)

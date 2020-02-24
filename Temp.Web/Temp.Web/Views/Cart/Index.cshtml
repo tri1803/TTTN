@@ -1,0 +1,26 @@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "_Layout";
+    var cart = (List<CartItemDto>)ViewBag.cart;
+}
+
+<table>
+    @foreach (var item in cart)
+    {
+        <tr>
+            <td>@item.Product.Name</td>
+            <td><img src="~/img/@item.Product.Avatar" /></td>
+            <td>@item.Product.Price</td>
+            <td>@item.Amount</td>
+        </tr>
+    }
+</table>
+             
+                    
+                
+
+
+
+
+           

@@ -78,10 +78,8 @@ namespace Temp.Web
                     option.AccessDeniedPath = Constants.Route.AccessDenied;
                 });
             
-            services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(Convert.ToDouble(Configuration[Constants.Settings.ExpiredSessionTime] ?? "60"));
-            });
+            services.AddSession();
+            
 
             services.AddAuthorization(options =>
             {

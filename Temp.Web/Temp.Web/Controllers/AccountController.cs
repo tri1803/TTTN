@@ -85,6 +85,7 @@ namespace Temp.Web.Controllers
         /// <returns></returns>
         public async Task<IActionResult> LogOut()
         {
+            HttpContext.Session.Remove("cart");
             Response.Cookies.Delete(ClaimTypes.Name);
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Home","Home");
