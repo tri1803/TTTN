@@ -30,7 +30,7 @@ namespace Temp.Service.Service
 
         public IEnumerable<SaleDto> GetAll()
         {
-            var sales = _unitofWork.SaleBaseService.ObjectContext.Where(s => s.EndDate >= DateTime.Now).AsEnumerable();
+            var sales = _unitofWork.SaleBaseService.ObjectContext.Include(s => s.Product).AsEnumerable();
             return _mapper.Map<IEnumerable<Sale>, IEnumerable<SaleDto>>(sales);
         }
     }

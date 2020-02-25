@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<ProductDto>
-
+@using Temp.Web.Infacestructure.Helpers;
 @{
     ViewBag.Title = "Index";
     Layout = "_AdminLayout";
@@ -31,7 +31,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Id</td>
+                            <td>@Html.Raw(item.Desc)</td>
                             <td>@item.Name</td>
                             <td><img src="~/img/@item.Avatar" width="100px" height="100px"/></td>                          
                             <td>@item.Amount</td>

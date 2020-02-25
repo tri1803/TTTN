@@ -24,6 +24,7 @@ namespace Temp.Web.Controllers
 
         public IActionResult Home()
         {
+            
             ViewBag.MenuCate = _categoryService.GetAllCategories();
             ViewBag.NewProduct = _productService.GetProductNews_10();
             ViewBag.phukien = _productService.Get10Phukien();

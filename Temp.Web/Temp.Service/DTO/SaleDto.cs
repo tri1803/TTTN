@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using Temp.DataAccess.Data;
 
 namespace Temp.Service.DTO
@@ -21,5 +22,7 @@ namespace Temp.Service.DTO
         public int? PriceNow { get; set; }
 
         public Product Product { get; set; }
+
+        public List<Product> Products { get; set; }
     }
 }

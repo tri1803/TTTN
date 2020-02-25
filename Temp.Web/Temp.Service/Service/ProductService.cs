@@ -88,13 +88,13 @@ namespace Temp.Service.Service
 
         public List<ProductViewModel> GetProductNews_10()
         {
-            var products = _unitofWork.ProductBaseService.ObjectContext.Include(s => s.Category).Where(s => s.Category.Name != "Phụ kiện khác").OrderByDescending(s => s.CreateDate).Take(10).ToList();
+            var products = _unitofWork.ProductBaseService.ObjectContext.Include(s => s.Category).Where(s => s.Category.Name != "Phụ kiện khác" && s.ProductType == (int)ProductType.Active).OrderByDescending(s => s.CreateDate).Take(10).ToList();
             return _mapper.Map<List<Product>, List<ProductViewModel>>(products);
         }
 
         public List<ProductViewModel> Get10Phukien()
         {
-            var products = _unitofWork.ProductBaseService.ObjectContext.Include(s => s.Category).Where(s => s.Category.Name == "Phụ kiện khác").OrderByDescending(s => s.CreateDate).Take(10).ToList();
+            var products = _unitofWork.ProductBaseService.ObjectContext.Include(s => s.Category).Where(s => s.Category.Name == "Phụ kiện khác" && s.ProductType == (int)ProductType.Active).OrderByDescending(s => s.CreateDate).Take(10).ToList();
             return _mapper.Map<List<Product>, List<ProductViewModel>>(products);
         }
 
@@ -122,6 +122,11 @@ namespace Temp.Service.Service
         {
             var products = _unitofWork.ProductBaseService.ObjectContext.Where(s => s.ProductType == (int)ProductType.InActive).Include(s => s.Category).Take(10).ToList();
             return _mapper.Map<List<Product>, List<ProductViewModel>>(products);
+        }
+
+        public List<Product> GetAllProduct()
+        {
+            return _unitofWork.ProductBaseService.GetAll().ToList();
         }
     }
 }
