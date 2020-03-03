@@ -1,0 +1,96 @@
+﻿@model CreateUserDto
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "_Layout";
+}
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/page/images/bg/2.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Thanh toán</h2>
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="index.html"></a>
+                            <span class="brd-separetor"></span>
+                            <span class="breadcrumb-item active"></span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<!-- Start Checkout Area -->
+<section class="our-checkout-area ptb--120 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-8">
+                <div class="ckeckout-left-sidebar">
+                    <!-- Start Checkbox Area -->
+                    <div class="checkout-form">
+                        <h2 class="section-title-3">Điền vào thông tin:</h2>
+                        <div class="checkout-form-inner">
+                            <div class="single-checkout-box">
+                                <input type="text" placeholder="Họ" asp-for="FirstName">
+                                <input type="text" placeholder="Tên" asp-for="LastName">
+                            </div>
+                            <div class="single-checkout-box">
+                                <input type="text" placeholder="Địa chỉ" asp-for="Address">
+                                <input type="text" placeholder="Số điện thoại" asp-for="Phone">
+                            </div>
+
+                            <div class="single-checkout-box">
+                                <p>Quốc gia</p>
+                                <select>
+
+                                    <option>Việt Nam</option>
+                                    <option>Khác</option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <br />
+                    <!-- End Checkbox Area -->
+                    <!-- Start Payment Box -->
+                    <!-- End Payment Box -->
+                    <!-- Start Payment Way -->
+                    <div class="our-payment-sestem">
+                        <h2>Bạn đã chắc chắn 
+                        với những thông tin trên :</h2>
+                        <p></p>
+                        <br />
+                        <div class="checkout-btn">
+                            <a class="btn btn-success" asp-action="Checkout">Đồng ý</a>
+                        </div>
+                    </div>
+                    <!-- End Payment Way -->
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4">
+                <div class="checkout-right-sidebar">
+                    <div class="our-important-note">
+                        <h2 class="section-title-3">Lưu ý :</h2>
+                        <p class="note-desc">Quý khách vui lòng mở hàng trước mắt nhân viên giao hàng, cửa hàng cam kết như bên dưới:</p>
+                        <ul class="important-note">
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Cửa hàng miễn phí giao hàng tận nơi.</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Lắp đặt thiết bị tại nhà</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Chính sách bảo hành theo sản phẩm</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>Đổi hàng ngay nếu sản phẩm không như mong muốn</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="puick-contact-area mt--60">
+                        <h2 class="section-title-3">Liên hệ nhanh</h2>
+                        <a href="phone:+8801722889963">+84 985 800 465 </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
