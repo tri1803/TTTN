@@ -57,10 +57,10 @@
                             <nav class="mainmenu__nav hidden-xs hidden-sm">
                                 <ul class="main__menu">
                                     <li class="drop"><a asp-action="Home" asp-controller="Home">Trang chủ</a></li>
-                                    <li class="drop"><a href="index.html">Blogs</a></li>
-                                    <li class="drop"><a href="index.html">Giới thiệu</a></li>
+                                    <li class="drop"><a asp-controller="Blog" asp-action="Index">Blogs</a></li>
+                                    <li class="drop"><a asp-controller="About" asp-action="Index">Giới thiệu</a></li>
 
-                                    <li><a href="contact.html">Liên hệ</a></li>
+                                    <li><a asp-controller="Contact" asp-action="Index">Liên hệ</a></li>
                                 </ul>
                             </nav>
 
@@ -76,7 +76,7 @@
                                 {
                                     <li class="dropdown">
                                         <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            
+
                                             <span class="ti-user"></span>
                                             Hi @Context.User.Identity.Name
 
@@ -93,7 +93,7 @@
 
                                 <li class="cart__menu">
                                     <a asp-controller="Cart" asp-action="Index"><span class="ti-shopping-cart"></span></a>
-                                    
+
                                 </li>
 
                             </ul>
@@ -185,7 +185,7 @@
                                     <li><a href="about.html">Blogs</a></li>
                                     <li><a href="contact.html">Liên hệ</a></li>
                                     <li><a href="#">Giới thiệu</a></li>
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -218,14 +218,13 @@
                         <!-- End Single Footer Widget -->
                     </div>
                 </div>
-                
+
             </div>
         </footer>
         <!-- End Footer Area -->
     </div>
     <!-- Body main wrapper end -->
     <!-- QUICKVIEW PRODUCT -->
-    
     <!-- END QUICKVIEW PRODUCT -->
     <!-- Placed js at the end of the document so the pages load faster -->
     <!-- jquery latest version -->
@@ -240,6 +239,7 @@
     <script src="~/page/js/waypoints.min.js"></script>
     <!-- Main js file that contents all jQuery plugins activation. -->
     <script src="~/page/js/main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo"></script>
     @RenderSection("Scripts", required: false)
 </body>
 

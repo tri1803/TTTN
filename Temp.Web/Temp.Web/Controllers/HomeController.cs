@@ -12,7 +12,6 @@ namespace Temp.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private const string CartSession = "CartSession";
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
 

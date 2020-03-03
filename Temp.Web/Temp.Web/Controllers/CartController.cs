@@ -20,7 +20,7 @@ namespace Temp.Web.Controllers {
         {
             var cart = SessionHelper.GetObjectFromJson<List<CartItemDto>>(HttpContext.Session, "cart");
             ViewBag.cart = cart;
-            return View();
+            return View(cart);
         }
 
         public IActionResult Add(int id)
@@ -48,6 +48,7 @@ namespace Temp.Web.Controllers {
             return RedirectToAction("Index", "Cart");
         }
 
+        [HttpPost]
         public IActionResult Update(int id, CartItemDto cartItem)
         {
             List<CartItemDto> cart = SessionHelper.GetObjectFromJson<List<CartItemDto>>(HttpContext.Session, "cart");
