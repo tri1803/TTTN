@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Temp.DataAccess.Data;
+using Temp.Service.BaseService;
 using Temp.Service.DTO;
 using Temp.Service.Service;
 using Temp.Web.Infacestructure.Helpers;
@@ -11,10 +13,12 @@ namespace Temp.Web.Controllers {
     public class CartController : Controller {
 
         private readonly IProductService _productService;
+        private readonly IUnitofWork _unitofWork;
 
-        public CartController(IProductService productService)
+        public CartController(IProductService productService, IUnitofWork unitofWork)
         {
             _productService = productService;
+            _unitofWork = unitofWork;
         }
         public IActionResult Index()
         {
@@ -78,6 +82,50 @@ namespace Temp.Web.Controllers {
                 }
             }
             return -1;
+        }
+
+        [HttpGet]
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult Checkout(CreateUserDto userDto)
+        {
+            var name = HttpContext.User.Identity.Name;
+            var user = _unitofWork.UserBaseService.Get(s => s.Username == name);
+            List<CartItemDto> cart = SessionHelper.GetObjectFromJson<List<CartItemDto>>(HttpContext.Session, "cart");
+            //update user
+            user.FirstName = userDto.FirstName;
+            user.LastName = userDto.LastName;
+            user.Phone = userDto.Phone;
+            user.Address = userDto.Address;
+            _unitofWork.UserBaseService.Update(user);
+
+            //them vao cart detail
+            foreach (var item in cart)
+            {
+                var cartDetail = new CartDetail();
+                cartDetail.Amount = item.Amount;
+                cartDetail.Price = item.Product.Price;
+                cartDetail.ProductId = item.Product.Id;
+                cartDetail.Status = 0;
+                cartDetail.UserId = user.Id;
+                _unitofWork.CartDetailBaseService.Add(cartDetail);
+            }
+
+
+            //giam so luong product
+            foreach (var item in cart)
+            {
+                var product = _unitofWork.ProductBaseService.GetById(item.Product.Id);
+                product.Amount -= item.Amount;
+                _unitofWork.ProductBaseService.Update(product);
+            }
+            _unitofWork.Save();
+            return RedirectToAction();
         }
     }
 }

@@ -30,29 +30,31 @@
                 <div class="ckeckout-left-sidebar">
                     <!-- Start Checkbox Area -->
                     <div class="checkout-form">
-                        <h2 class="section-title-3">Điền vào thông tin:</h2>
-                        <div class="checkout-form-inner">
-                            <div class="single-checkout-box">
-                                <input type="text" placeholder="Họ" asp-for="FirstName">
-                                <input type="text" placeholder="Tên" asp-for="LastName">
+                        <form asp-action="Checkout" method="post">
+                            <h2 class="section-title-3">Điền vào thông tin:</h2>
+                            <div class="checkout-form-inner">
+                                <div class="single-checkout-box">
+                                    <input type="text" placeholder="Họ" asp-for="FirstName">
+                                    <input type="text" placeholder="Tên" asp-for="LastName">
+                                </div>
+                                <div class="single-checkout-box">
+                                    <input type="text" placeholder="Địa chỉ" asp-for="Address">
+                                    <input type="text" placeholder="Số điện thoại" asp-for="Phone">
+                                </div>
+
+                                <div class="single-checkout-box">
+                                    <p>Quốc gia</p>
+                                    <select>
+
+                                        <option>Việt Nam</option>
+                                        <option>Khác</option>
+
+                                    </select>
+
+                                </div>
+                                <input type="submit" value="Save" class="btn btn-primary btn-block" />
                             </div>
-                            <div class="single-checkout-box">
-                                <input type="text" placeholder="Địa chỉ" asp-for="Address">
-                                <input type="text" placeholder="Số điện thoại" asp-for="Phone">
-                            </div>
-
-                            <div class="single-checkout-box">
-                                <p>Quốc gia</p>
-                                <select>
-
-                                    <option>Việt Nam</option>
-                                    <option>Khác</option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
+                        </form>
                     </div>
                     <br />
                     <!-- End Checkbox Area -->
@@ -65,7 +67,7 @@
                         <p></p>
                         <br />
                         <div class="checkout-btn">
-                            <a class="btn btn-success" asp-action="Checkout">Đồng ý</a>
+                            <a class="btn btn-success" asp-action="Checkout" asp-controller="Cart">Đồng ý</a>
                         </div>
                     </div>
                     <!-- End Payment Way -->
