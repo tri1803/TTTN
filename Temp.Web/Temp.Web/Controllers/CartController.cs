@@ -124,7 +124,10 @@ namespace Temp.Web.Controllers {
                 product.Amount -= item.Amount;
                 _unitofWork.ProductBaseService.Update(product);
             }
+
             _unitofWork.Save();
+            cart = null;
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             return RedirectToAction();
         }
     }

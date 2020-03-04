@@ -52,8 +52,19 @@
                                     </select>
 
                                 </div>
-                                <input type="submit" value="Save" class="btn btn-primary btn-block" />
+
                             </div>
+                            <div class="single-checkout-box">
+                                <br />
+                                <p>
+                                    Bạn đã chắc chắn
+                                    với những thông tin trên :
+                                </p>
+                                <br />
+                                <input type="submit" value="Mua hàng" class="btn btn-primary" />
+                                <a class="btn btn-warning" asp-action="home" asp-controller="home">Ve trang chu</a>
+                            </div>
+                            
                         </form>
                     </div>
                     <br />
@@ -61,15 +72,9 @@
                     <!-- Start Payment Box -->
                     <!-- End Payment Box -->
                     <!-- Start Payment Way -->
-                    <div class="our-payment-sestem">
-                        <h2>Bạn đã chắc chắn 
-                        với những thông tin trên :</h2>
-                        <p></p>
-                        <br />
-                        <div class="checkout-btn">
-                            <a class="btn btn-success" asp-action="Checkout" asp-controller="Cart">Đồng ý</a>
-                        </div>
-                    </div>
+                    
+                            
+                       
                     <!-- End Payment Way -->
                 </div>
             </div>
