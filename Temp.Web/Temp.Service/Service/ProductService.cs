@@ -128,5 +128,10 @@ namespace Temp.Service.Service
         {
             return _unitofWork.ProductBaseService.GetAll().ToList();
         }
+
+        public int GetCountProduct()
+        {
+            return _unitofWork.ProductBaseService.GetAll().Count();
+        }
     }
 }

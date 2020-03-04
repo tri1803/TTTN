@@ -15,5 +15,9 @@ namespace Temp.Service.Service
         void Process(int id);
 
         void Done(int id);
+
+        int GetCountOrder();
+
+        List<CartDetail> Get10();
     }
 }

@@ -35,5 +35,7 @@ namespace Temp.Service.Service
         CategoryDto GetById(int id);
 
         List<Category> GetAllCategories();
+
+        int GetCountCate();
     }
 }

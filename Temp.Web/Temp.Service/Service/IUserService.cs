@@ -47,5 +47,7 @@ namespace Temp.Service.Service
         User GetById(int id);
 
         CreateUserDto GetUserEditById(int id);
+
+        int GetCountUser();
     }
 }

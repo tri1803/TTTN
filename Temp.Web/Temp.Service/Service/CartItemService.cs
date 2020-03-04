@@ -36,9 +36,20 @@ namespace Temp.Service.Service
             _unitofWork.Save();
         }
 
+        public List<CartDetail> Get10()
+        {
+            var results = _unitofWork.CartDetailBaseService.ObjectContext.Where(s => s.Status == (int)OrderType.Done).Include(s => s.Product).Include(s => s.User).Take(10).ToList();
+            return results;
+        }
+
         public IEnumerable<CartDetail> GetAll()
         {
             return _unitofWork.CartDetailBaseService.ObjectContext.Include(s => s.Product).Include(s => s.User).ToList().AsEnumerable();
+        }
+
+        public int GetCountOrder()
+        {
+            return _unitofWork.CartDetailBaseService.GetAll().Count();
         }
 
         public void Process(int id)

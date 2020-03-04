@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http.Headers;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
@@ -141,6 +142,11 @@ namespace Temp.Service.Service
                 AvatarPath = user.Avatar
             };           
             return userDto;
+        }
+
+        public int GetCountUser()
+        {
+            return _unitofWork.UserBaseService.GetAll().Count();
         }
     }
 }

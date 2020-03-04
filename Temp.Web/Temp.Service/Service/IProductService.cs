@@ -47,5 +47,7 @@ namespace Temp.Service.Service
         List<ProductViewModel> GetProductInactive();
 
         List<Product> GetAllProduct();
+
+        int GetCountProduct();
     }
 }

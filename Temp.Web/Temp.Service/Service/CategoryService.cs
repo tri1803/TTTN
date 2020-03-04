@@ -83,5 +83,10 @@ namespace Temp.Service.Service
             var result =  _unitofWork.CategoryBaseService.ObjectContext.ToList();
             return result;
         }
+
+        public int GetCountCate()
+        {
+            return _unitofWork.CategoryBaseService.GetAll().Count();
+        }
     }
 }
