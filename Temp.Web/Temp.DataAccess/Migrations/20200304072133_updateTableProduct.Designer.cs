@@ -3,21 +3,41 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Temp.DataAccess.Data;
 
 namespace Temp.DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200304072133_updateTableProduct")]
+    partial class updateTableProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Temp.DataAccess.Data.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CartDetailId");
+
+                    b.Property<int>("Status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartDetailId")
+                        .IsUnique();
+
+                    b.ToTable("Cart");
+                });
 
             modelBuilder.Entity("Temp.DataAccess.Data.CartDetail", b =>
                 {
@@ -26,8 +46,6 @@ namespace Temp.DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("Amount");
-
-                    b.Property<DateTime?>("Date");
 
                     b.Property<int?>("Price");
 
@@ -43,7 +61,7 @@ namespace Temp.DataAccess.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CartDetails");
+                    b.ToTable("CartDetail");
                 });
 
             modelBuilder.Entity("Temp.DataAccess.Data.Category", b =>
@@ -81,7 +99,7 @@ namespace Temp.DataAccess.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comment");
                 });
 
             modelBuilder.Entity("Temp.DataAccess.Data.Customer", b =>
@@ -124,7 +142,7 @@ namespace Temp.DataAccess.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("Images");
+                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("Temp.DataAccess.Data.Nsx", b =>
@@ -138,7 +156,7 @@ namespace Temp.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Nsxs");
+                    b.ToTable("Nsx");
                 });
 
             modelBuilder.Entity("Temp.DataAccess.Data.Product", b =>
@@ -215,7 +233,7 @@ namespace Temp.DataAccess.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("Sales");
+                    b.ToTable("Sale");
                 });
 
             modelBuilder.Entity("Temp.DataAccess.Data.User", b =>
@@ -254,13 +272,21 @@ namespace Temp.DataAccess.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("Temp.DataAccess.Data.Cart", b =>
+                {
+                    b.HasOne("Temp.DataAccess.Data.CartDetail", "CartDetail")
+                        .WithOne("Cart")
+                        .HasForeignKey("Temp.DataAccess.Data.Cart", "CartDetailId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Temp.DataAccess.Data.CartDetail", b =>
                 {
                     b.HasOne("Temp.DataAccess.Data.Product", "Product")
-                        .WithMany("CartDetails")
+                        .WithMany("CartDetail")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
 

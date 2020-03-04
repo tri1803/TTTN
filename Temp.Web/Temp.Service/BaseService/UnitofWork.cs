@@ -13,7 +13,6 @@ namespace Temp.Service.BaseService
         private IBaseService<User> _userBaseService;
         private IBaseService<Category> _cateBaseService;
         private IBaseService<Product> _productBaseService;
-        private IBaseService<Cart> _cartBaseService;
         private IBaseService<CartDetail> _cartDetailBaseService;
         private IBaseService<Comment> _commentBaseService;
         private IBaseService<Image> _ImageBaseService;
@@ -48,9 +47,6 @@ namespace Temp.Service.BaseService
         /// </summary>
         public IBaseService<Product> ProductBaseService => _productBaseService =
                 _productBaseService ?? new BaseService<Product>(_dataContext);
-
-        public IBaseService<Cart> CartBaseService => _cartBaseService =
-                    _cartBaseService ?? new BaseService<Cart>(_dataContext);
 
         public IBaseService<CartDetail> CartDetailBaseService => _cartDetailBaseService =
                     _cartDetailBaseService ?? new BaseService<CartDetail>(_dataContext);

@@ -28,8 +28,6 @@ namespace Temp.Service.BaseService
         /// </summary>
         IBaseService<Product> ProductBaseService { get; }
 
-        IBaseService<Cart> CartBaseService { get; }
-
         IBaseService<CartDetail> CartDetailBaseService { get; }
 
         IBaseService<Comment> CommentBaseService { get; }

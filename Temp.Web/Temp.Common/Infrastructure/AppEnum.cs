@@ -7,7 +7,8 @@
     {
         Admin = 1,
         Manager = 2,
-        User = 3
+        User = 3,
+        Shipper = 4
     }
 
     /// <summary>
@@ -31,6 +32,13 @@
     {
         Active = 0,
         InActive = 1
+    }
+
+    public enum OrderType
+    {
+        NoProcess = 0,
+        Processing = 1,
+        Done = 2
     }
 
 }

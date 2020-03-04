@@ -18,9 +18,9 @@ namespace Temp.DataAccess.Data
 
         public int Status { get; set; }
 
-        public Product Product { get; set; }
+        public DateTime? Date { get; set; }
 
-        public Cart Cart { get; set; }
+        public Product Product { get; set; }
 
         public User User { get; set; }
     }

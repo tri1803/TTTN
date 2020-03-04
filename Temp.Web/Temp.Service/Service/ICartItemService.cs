@@ -11,5 +11,9 @@ namespace Temp.Service.Service
         IEnumerable<CartDetail> GetAll();
 
         void Create(CartItemDto cartItemDto);
+
+        void Process(int id);
+
+        void Done(int id);
     }
 }

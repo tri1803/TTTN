@@ -59,7 +59,5 @@ namespace Temp.Service.DTO
         public Role Role { get; set; }
 
         public Comment Comment { get; set; }
-
-        public Cart Cart { get; set; }
     }
 }

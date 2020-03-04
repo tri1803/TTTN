@@ -15,17 +15,15 @@ namespace Temp.DataAccess.Data
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<User> Carts { get; set; }
+        public DbSet<CartDetail> CartDetails { get; set; }
 
-        public DbSet<User> CartDetails { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<User> Comments { get; set; }
+        public DbSet<Image> Images { get; set; }
 
-        public DbSet<User> Images { get; set; }
+        public DbSet<Nsx> Nsxs { get; set; }
 
-        public DbSet<User> Nsxs { get; set; }
-
-        public DbSet<User> Sales { get; set; }
+        public DbSet<Sale> Sales { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
 

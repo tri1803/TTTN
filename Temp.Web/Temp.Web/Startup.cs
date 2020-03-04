@@ -56,6 +56,7 @@ namespace Temp.Web
             services.AddScoped<INsxService, NsxService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ISaleService, SaleService>();
+            services.AddScoped<ICartItemService, CartItemService>();
             
 
             //mapper

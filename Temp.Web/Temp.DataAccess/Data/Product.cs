@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Temp.DataAccess.Data
@@ -47,6 +48,6 @@ namespace Temp.DataAccess.Data
 
         public Comment Comment { get; set; }
 
-        public CartDetail CartDetail { get; set; }
+        public ICollection<CartDetail> CartDetails { get; set; }
     }
 }
