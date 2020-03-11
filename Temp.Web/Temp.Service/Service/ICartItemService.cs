@@ -19,5 +19,9 @@ namespace Temp.Service.Service
         int GetCountOrder();
 
         List<CartDetail> Get10();
+
+        int GetTotalInMonth(int month);
+
+        int GetCountInMonth(int month);
     }
 }

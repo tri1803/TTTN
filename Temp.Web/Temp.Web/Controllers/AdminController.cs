@@ -34,6 +34,21 @@ namespace Temp.Web.Controllers
             ViewBag.countOrder = _cartService.GetCountOrder();
             ViewBag.countUser = _userService.GetCountUser();
             ViewBag.listOrder = _cartService.Get10();
+            
+            int[] arr = new int[12];
+            for (int i = 0; i < 12; i++)
+            {
+                arr[i] = _cartService.GetTotalInMonth(i + 1);
+            }
+            ViewBag.total = arr;
+
+            int[] arr2 = new int[12];
+            for (int i = 0; i < 12; i++)
+            {
+                arr2[i] = _cartService.GetTotalInMonth(i + 1);
+            }
+            ViewBag.total2 = arr2;
+
             var user = HttpContext.User.Identity.Name;
             return View("Index", user);
         }

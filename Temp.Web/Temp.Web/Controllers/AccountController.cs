@@ -42,41 +42,36 @@ namespace Temp.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogIn(LogInDto logInDto)
         {
-            var user = _account.LogIn(logInDto);
-            if (string.IsNullOrEmpty(logInDto.Username))
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError(string.Empty, MessageResource.NullUsername);
-            }
-            else if (string.IsNullOrEmpty(logInDto.Password))
-            {
-                ModelState.AddModelError(string.Empty, MessageResource.NullPassword);
-            }
-            if (user != null)
-            {                
+                var user = _account.LogIn(logInDto);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, MessageResource.UserLoginFailed);
+                    Log.Error(MessageResource.UserLoginFailed);
+                    return View(logInDto);
+                }
+
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.Username),
-                    new Claim(ClaimTypes.Role, user.Role.Name),                   
+                    new Claim(ClaimTypes.Role, user.Role.Name),
                     new Claim(Constants.ClaimName.AccountId, user.Id.ToString())
-                };                   
+                };
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-                await HttpContext.SignInAsync(principal);
-                if(user.RoleId == (int)Role.Admin || user.RoleId == (int)Role.Manager)
+                await HttpContext.SignInAsync(principal);                
+                if (user.RoleId == (int)Role.Admin || user.RoleId == (int)Role.Manager)
                 {
                     return RedirectToAction("Index", "Admin");
-                } else
+                }
+                else
                 {
                     return RedirectToAction("Home", "Home");
                 }
-                
 
-            }  else
-            {
-                ModelState.AddModelError(string.Empty, MessageResource.UserLoginFailed);
-                Log.Error(MessageResource.UserLoginFailed);
             }
-            return View(logInDto);
+            return View(logInDto);          
         }
 
         /// <summary>

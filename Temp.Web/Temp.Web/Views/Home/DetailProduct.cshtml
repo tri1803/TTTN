@@ -54,40 +54,22 @@
                             <h2>@Model.Name</h2>
                         </div>
                         <div class="pro__dtl__rating">
-                            @*<ul class="pro__rating">
-                                <li><span class="ti-star"></span></li>
-                                <li><span class="ti-star"></span></li>
-                                <li><span class="ti-star"></span></li>
-                                <li><span class="ti-star"></span></li>
-                                <li><span class="ti-star"></span></li>
-                            </ul>*@
+                           
                             <span class="rat__qun">(Based on 0 Ratings)</span>
                         </div>
                         <div class="pro__details">
                             @Html.Raw(Model.Desc)</div>
                         <ul class="pro__dtl__prize">
-                            
-                            <li>$@Model.Price</li>
+                            @if (Model.ProductType == (int)ProductType.Active)
+                            {
+                                <li>$@Model.Price</li>
+                            } else
+                            {
+                                <li>Gia lien he</li>
+                            }
+
                         </ul>
-                        @*<div class="pro__dtl__color">
-                            <h2 class="title__5">Choose Colour</h2>
-                            <ul class="pro__choose__color">
-                                <li class="red"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
-                                <li class="blue"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
-                                <li class="perpal"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
-                                <li class="yellow"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
-                            </ul>
-                        </div>*@
-                        @*<div class="pro__dtl__size">
-                            <h2 class="title__5">Size</h2>
-                            <ul class="pro__choose__size">
-                                <li><a href="#">xl</a></li>
-                                <li><a href="#">m</a></li>
-                                <li><a href="#">ml</a></li>
-                                <li><a href="#">lm</a></li>
-                                <li><a href="#">xxl</a></li>
-                            </ul>
-                        </div>*@
+                        
                         <div class="product-action-wrap">
                             
                         </div>

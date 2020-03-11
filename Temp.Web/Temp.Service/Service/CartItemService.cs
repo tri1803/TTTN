@@ -44,12 +44,24 @@ namespace Temp.Service.Service
 
         public IEnumerable<CartDetail> GetAll()
         {
-            return _unitofWork.CartDetailBaseService.ObjectContext.Include(s => s.Product).Include(s => s.User).ToList().AsEnumerable();
+            return _unitofWork.CartDetailBaseService.ObjectContext.Include(s => s.Product).Include(s => s.User).ToList().OrderByDescending(s => s.Date).AsEnumerable();
+        }
+
+        public int GetCountInMonth(int month)
+        {
+            var total = _unitofWork.CartDetailBaseService.ObjectContext.Where(s => s.Date.Value.Month.ToString().Equals(month.ToString())).Count();
+            return total;
         }
 
         public int GetCountOrder()
         {
             return _unitofWork.CartDetailBaseService.GetAll().Count();
+        }
+
+        public int GetTotalInMonth(int month)
+        {
+            var total = _unitofWork.CartDetailBaseService.ObjectContext.FirstOrDefault(s => s.Date.Value.Month.ToString().Equals(month.ToString()));
+            return Convert.ToInt32((total.Amount * total.Price));
         }
 
         public void Process(int id)

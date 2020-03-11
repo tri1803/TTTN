@@ -8,151 +8,281 @@
     var oder = (int)ViewBag.countOrder;
     var user = (int)ViewBag.countUser;
     var listOrder = (List<CartDetail>)ViewBag.listOrder;
+    var total = (int[])ViewBag.total;
+    var total2 = (int[])ViewBag.total2;
 }
-    <div class="container-fluid">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
+<div class="container-fluid">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
 
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
+                </div><!-- /.col -->
+                <div class="col-sm-6">
 
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1"><i class="fab fa-audible"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Số thể loại</span>
-                        <span class="info-box-number">
-                            @cate
-                        </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box mb-3">
-                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-laptop"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Số sản phẩm</span>
-                        <span class="info-box-number">@product</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <!-- fix for small devices only -->
-            <div class="clearfix hidden-md-up"></div>
-
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box mb-3">
-                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-ambulance"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Số đơn hàng</span>
-                        <span class="info-box-number">@oder</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box mb-3">
-                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Số người dùng</span>
-                        <span class="info-box-number">@user</span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-        </div>
-
-
-
-        <div class="card card-danger">
-            <div class="card-header">
-                <h3 class="card-title">Biểu đồ thống kê doanh thu</h3>
-
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-                </div>
-            </div>
-            <div class="card-body">
-                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-            </div>
-            <!-- /.card-body -->
-        </div>
-
-
-
-
-
-        <div class="card">
-            <div class="card-header border-transparent">
-                <h3 class="card-title">Đơn hàng gần đây</h3>
-
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table m-0 table-hover" style="text-align:center;">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Sản phẩm</th>
-                                <th>Người mua</th>
-                                <th>Số lượng</th>
-                                <th>Tổng tiền</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                @foreach (var item in listOrder)
-                                {
-                                    <td>ORD @item.Id</td>
-                                    <td>@item.Product.Name</td>
-                                    <td>@item.User.FirstName @item.User.LastName</td>
-                                    <td>@item.Amount</td>
-                                    <td>$@(item.Amount*item.Product.Price)</td>
-                                }
-                            </tr>                            
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.table-responsive -->
-            </div>
-            <!-- /.card-body -->
-            
-            <!-- /.card-footer -->
-        </div>
-
-
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-info elevation-1"><i class="fab fa-audible"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Số thể loại</span>
+                    <span class="info-box-number">
+                        @cate
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-laptop"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Số sản phẩm</span>
+                    <span class="info-box-number">@product</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <!-- fix for small devices only -->
+        <div class="clearfix hidden-md-up"></div>
+
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-ambulance"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Số đơn hàng</span>
+                    <span class="info-box-number">@oder</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+                <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Số người dùng</span>
+                    <span class="info-box-number">@user</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-6">
+            <!--pie chart-->
+            <div class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title">Biểu đồ thống kê doanh thu</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <!--bar chart-->
+        <div class="col-12 col-sm-6 col-md-6">
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Thống kê đơn hàng trong năm</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Đơn hàng gần đây</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+            <div class="">
+                <table class="table table-hover text-nowrap" style="text-align:center;">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Sản phẩm</th>
+                            <th>Người mua</th>
+                            <th>Số lượng</th>
+                            <th>Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in listOrder)
+                        {
+                            <tr>
+
+                                <td>ORD @item.Id</td>
+                                <td>@item.Product.Name</td>
+                                <td>@item.User.FirstName @item.User.LastName</td>
+                                <td>@item.Amount</td>
+                                <td>$@(item.Amount * item.Product.Price)</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <!-- /.card-footer -->
+    </div>
+
+
+</div>
+@section Scripts
+{
+    <script>
+  $(function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //-------------
+    //- DONUT CHART -
+    //-------------
+      // Get context with jQuery - using jQuery's .get() method.
+
+    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+                  labels: [
+                      'Tháng 1',
+                      'Tháng 2',
+                      'Tháng 3',
+                      'Tháng 4',
+                      'Tháng 5',
+                      'Tháng 6',
+                      'Tháng 7',
+                      'Tháng 8',
+                      'Tháng 9',
+                      'Tháng 10',
+                      'Tháng 11',
+                      'Tháng 12',
+
+                  ],
+      datasets: [
+        {
+                      data: [@total[0],@total[1],@total[2],@total[3],@total[4],@total[5],@total[6],@total[7],@total[8],@total[9],@total[10],@total[11]],
+          backgroundColor : ['#f56954','#d1e907', '#f39c12','#00a65a','#49c84d','#53df90', '#00c0ef', '#3c8dbc','#744cbe','#0477f3','#f012be','#f50a20']
+        }
+      ]
+    }
+                  var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+              //Create pie or douhnut chart
+              // You can switch between pie and douhnut using the method below.
+              var donutChart = new Chart(donutChartCanvas, {
+
+                type: 'doughnut',
+                data: donutData,
+                options: donutOptions
+    })
+      /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //-------------
+    //- Bar CHART -
+    //-------------
+      // Get context with jQuery - using jQuery's .get() method.
+      var areaChartData = {
+      labels  : ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+      datasets: [
+        {
+          label               : 'Số đơn hàng',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [@total2[0], @total2[1], @total2[2], @total2[3], @total2[4], @total2[5], @total2[6], @total2[7], @total2[8], @total2[9], @total2[10], @total2[11]]
+        },
+
+      ]
+      }
+
+      var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
+    var stackedBarChartData = jQuery.extend(true, {}, areaChartData)
+
+    var stackedBarChartOptions = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      scales: {
+        xAxes: [{
+          stacked: true,
+        }],
+        yAxes: [{
+          stacked: true
+        }]
+      }
+    }
+
+    var stackedBarChart = new Chart(stackedBarChartCanvas, {
+      type: 'bar',
+      data: stackedBarChartData,
+      options: stackedBarChartOptions
+    })
+  })
+    </script>
+}

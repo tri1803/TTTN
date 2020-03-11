@@ -20,6 +20,10 @@ using Temp.Web.Infacestructure.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using Temp.Service.DTO;
+using Temp.Web.Infrastructure.Validations;
 
 namespace Temp.Web
 {
@@ -56,8 +60,8 @@ namespace Temp.Web
             services.AddScoped<INsxService, NsxService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ISaleService, SaleService>();
-            services.AddScoped<ICartItemService, CartItemService>();
-            
+            services.AddScoped<ICartItemService, CartItemService>();            
+
 
             //mapper
             services.AddAutoMapper(typeof(UserMapping));
@@ -92,7 +96,8 @@ namespace Temp.Web
             
             
             services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation();
+            services.AddTransient<IValidator<LogInDto>, LoginValidate>();
 
             services.AddCors(options =>
             {
