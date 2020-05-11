@@ -7,7 +7,7 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2 container-fluid">
-            
+            <h1>Đơn hàng</h1>
         </div>
 
         <div class="row mb-2">
@@ -15,14 +15,15 @@
                 <table class="table table-bordered table-hover" id="cart" style="text-align:center;">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Product</th>
-                            <th>Avata</th>
-                            <th>Amount</th>
-                            <th>Price</th>
-                            <th>Customer</th>
-                            <th>Date</th>
-                            <th>Ship</th>
+                            <th>Stt</th>
+                            <th>Sản phẩm</th>
+                            <th>Hình ảnh</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th>Khách hàng</th>
+                            <th>Ngày đặt hàng</th>
+                            <th>Vận chuyển</th>
+                            <th>Chi tiết</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,12 +52,18 @@
                                     }
 
                                 </td>
+                                <td>
+                                    <a asp-action="ShowDetail" asp-route-id="@item.Id" asp-controller="Oder">Chi tiết</a>
+                                </td>
 
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
+
+
+            
         </div>
     </div>
 </div>
@@ -67,8 +74,9 @@
         $(document).ready(function () {
             $('#cart').DataTable({
             });
-
+           
         });
+         
     </script>
 }
 

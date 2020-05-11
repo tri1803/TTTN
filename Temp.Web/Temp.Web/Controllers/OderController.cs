@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Temp.Service.Service;
+using Temp.Common.Infrastructure;
 
 namespace Temp.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = Constants.Role.Shipper)]
     public class OderController : Controller
     {
         private readonly ICartItemService _cartItemService;
@@ -34,5 +35,11 @@ namespace Temp.Web.Controllers
             _cartItemService.Done(id);
             return RedirectToAction("Index", "Oder");
         }
+
+        public IActionResult ShowDetail(int id)
+        {
+            var oder = _cartItemService.GetById(id);
+            return View(oder);
+        }        
     }
 }

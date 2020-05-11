@@ -8,7 +8,7 @@
 
 <div class="content-header">
     <div class="container-fluid">
-        <h2>Save</h2>
+        <h2>Thông tin sản phẩm</h2>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-12">
@@ -18,28 +18,28 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label asp-for="Name" class="control-label"></label>
+                                    <label asp-for="Name" class="control-label">Tên sản phẩm</label>
                                     <input asp-for="Name" class="form-control" />
                                     <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Amount" class="control-label"></label>
+                                    <label asp-for="Amount" class="control-label">Số lượng</label>
                                     <input asp-for="Amount" class="form-control" />
                                     <span asp-validation-for="Amount" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="Price" class="control-label"></label>
+                                    <label asp-for="Price" class="control-label">Giá</label>
                                     <input asp-for="Price" class="form-control" />
                                     <span asp-validation-for="Price" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Category</label>
+                                    <label class="control-label">Thể loại</label>
                                     <select class="form-control form-control-md" asp-for="CategoryId">
                                         @foreach (var item in Model.Categories)
                                         {
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Nsx</label>
+                                    <label class="control-label">Nhà sản xuất</label>
                                     <select class="form-control form-control-md" asp-for="NsxId">
                                         @foreach (var item in Model.Nsxes)
                                         {
@@ -68,7 +68,7 @@
                             
                         </div>
                         <div class="form-group">
-                            <label asp-for="Desc" class="control-label"></label>
+                            <label asp-for="Desc" class="control-label">Mô tả</label>
                                     
                             <textarea id="ckeditor" asp-for="Desc" class="form-control"></textarea>
                             
@@ -80,17 +80,17 @@
                             <p>Path:@Model.Avatar</p>
 
 
-                            <label asp-for="AvataPath" class="control-sm-2"></label>
+                            <label asp-for="AvataPath" class="control-sm-2">Hình ảnh</label>
                             <input asp-for="AvataPath" class="form-control-file" type="file" required id="imgInp"/>
 
 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-2">
-                                <input type="submit" value="Save" class="btn btn-primary btn-block" />
+                                <input type="submit" value="Lưu" class="btn btn-primary btn-block" />
                             </div>
                             <div class="form-group col-md-2">
-                                <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Return</a>
+                                <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Trở về</a>
                             </div>
                             <div class="form-group col-md-8"></div>
                         </div>

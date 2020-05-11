@@ -49,5 +49,13 @@ namespace Temp.Service.Service
         List<Product> GetAllProduct();
 
         int GetCountProduct();
+
+        List<CreateProductDto> Get4Mac();
+
+        List<CreateProductDto> Get4Dell();
+
+        List<Product> SeachProduct(string search);
+
+        bool CheckExist(CreateProductDto productDto);
     }
 }

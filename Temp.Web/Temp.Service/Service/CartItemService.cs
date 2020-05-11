@@ -47,6 +47,11 @@ namespace Temp.Service.Service
             return _unitofWork.CartDetailBaseService.ObjectContext.Include(s => s.Product).Include(s => s.User).ToList().OrderByDescending(s => s.Date).AsEnumerable();
         }
 
+        public CartDetail GetById(int id)
+        {
+            return _unitofWork.CartDetailBaseService.ObjectContext.Include(s => s.User).Include(s=> s.Product).FirstOrDefault(s => s.Id == id);
+        }
+
         public int GetCountInMonth(int month)
         {
             var total = _unitofWork.CartDetailBaseService.ObjectContext.Where(s => s.Date.Value.Month.ToString().Equals(month.ToString())).Count();

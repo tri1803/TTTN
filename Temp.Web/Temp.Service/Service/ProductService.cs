@@ -120,7 +120,8 @@ namespace Temp.Service.Service
 
         public List<ProductViewModel> GetProductInactive()
         {
-            var products = _unitofWork.ProductBaseService.ObjectContext.Where(s => s.ProductType == (int)ProductType.InActive).Include(s => s.Category).Take(10).ToList();
+            var products = _unitofWork.ProductBaseService.ObjectContext
+                .Where(s => s.ProductType == (int)ProductType.InActive).Include(s => s.Category).Take(10).ToList();
             return _mapper.Map<List<Product>, List<ProductViewModel>>(products);
         }
 
@@ -132,6 +133,38 @@ namespace Temp.Service.Service
         public int GetCountProduct()
         {
             return _unitofWork.ProductBaseService.GetAll().Count();
+        }
+
+        public List<CreateProductDto> Get4Mac()
+        {
+            var products = _unitofWork.ProductBaseService.ObjectContext.Include(s => s.Category)
+                .Where(s => s.Category.Name == "MacBook").Take(4).ToList();
+            return _mapper.Map<List<Product>, List<CreateProductDto>>(products);
+        }
+
+        public List<CreateProductDto> Get4Dell()
+        {
+            var products = _unitofWork.ProductBaseService.ObjectContext.Include(s => s.Category)
+                .Where(s => s.Category.Name == "Dell").Take(4).ToList();
+            return _mapper.Map<List<Product>, List<CreateProductDto>>(products);
+        }
+
+        public List<Product> SeachProduct(string search)
+        {
+            return _unitofWork.ProductBaseService.ObjectContext.Where(s => s.Name.Contains(search)).ToList();
+        }
+
+        /// <summary>
+        /// check exist product
+        /// </summary>
+        /// <param name="productDto"></param>
+        /// <returns>true=> product da ton tai, false=> chua ton tai</returns>
+        public bool CheckExist(CreateProductDto productDto)
+        {
+            var check = _unitofWork.ProductBaseService.ObjectContext.Any(s => s.Name == productDto.Name);
+            if (check)
+                return true;
+            return false;
         }
     }
 }

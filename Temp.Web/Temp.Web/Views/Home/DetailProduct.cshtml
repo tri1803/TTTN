@@ -1,81 +1,93 @@
 ﻿@model CreateProductDto
 @{
     ViewData["Title"] = "DetailProduct";
+    var Mac4 = (List<CreateProductDto>)ViewBag.get4Mac;
+    var Dell4 = (List<CreateProductDto>)ViewBag.get4Dell;
     Layout = "_Layout";
 }
 
     <section class="htc__product__details pt--120 pb--100 bg__white">
         <div class="container">
             <div class="row">
+                <!--day la anh-->
                 <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                     <div class="product__details__container">
-
                         <div class="product__big__images">
                             <div class="portfolio-full-image tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active product-video-position" id="img-tab-1">
-                                    <img src="~/img/@Model.Avatar" alt="full-image" style="width: 350px; margin-left: 100px">
-                                    <div class="product-video">
-                                        @*<a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
-                                            <i class="zmdi zmdi-videocam"></i> View Video
-                                        </a>*@
-                                    </div>
+                                    <img src="~/img/@Model.Avatar" alt="full-image" style="width: 350px;">
+
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-2">
-                                    @*<img src="images/product-details/big-img/12.jpg" alt="full-image">
-                                    <div class="product-video">
-                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
-                                            <i class="zmdi zmdi-videocam"></i> View Video
-                                        </a>
-                                    </div>*@
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-3">
-                                    @*<img src="images/product-details/big-img/11.jpg" alt="full-image">
-                                    <div class="product-video">
-                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
-                                            <i class="zmdi zmdi-videocam"></i> View Video
-                                        </a>
-                                    </div>*@
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade product-video-position" id="img-tab-4">
-                                    @*<img src="images/product-details/big-img/12.jpg" alt="full-image">
-                                    <div class="product-video">
-                                        <a class="video-popup" href="https://www.youtube.com/watch?v=cDDWvj_q-o8">
-                                            <i class="zmdi zmdi-videocam"></i> View Video
-                                        </a>
-                                    </div>*@
-                                </div>
+
                             </div>
                         </div>
                     </div>
+                    <ul class="product__small__images" role="tablist">
+                        <li role="presentation" class="pot-small-img active">
+                            <a href="#img-tab-1" role="tab" data-toggle="tab">
+                                <img src="~/a/1.jpg" alt="small-image">
+                            </a>
+                        </li>
+                        <li role="presentation" class="pot-small-img">
+                            <a href="#img-tab-2" role="tab" data-toggle="tab">
+                                <img src="~/a/5.jpg" alt="small-image">
+                            </a>
+                        </li>
+                        <li role="presentation" class="pot-small-img hidden-xs">
+                            <a href="#img-tab-3" role="tab" data-toggle="tab">
+                                <img src="~/a/6.jpg" alt="small-image">
+                            </a>
+                        </li>
+                        <li role="presentation" class="pot-small-img hidden-xs hidden-sm">
+                            <a href="#img-tab-4" role="tab" data-toggle="tab">
+                                <img src="~/a/4.jpg" alt="small-image">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
+
+                
+
+                <!--day la content-->
                 <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
                     <div class="htc__product__details__inner">
                         <div class="pro__detl__title">
-                            <h2>@Model.Name</h2>
+                            <h2 style="color:red">Tên sản phẩm: @Model.Name</h2>
                         </div>
                         <div class="pro__dtl__rating">
-                           
-                            <span class="rat__qun">(Based on 0 Ratings)</span>
+
+                            <span class="rat__qun">(Sản phẩm mới)</span>
                         </div>
                         <div class="pro__details">
-                            @Html.Raw(Model.Desc)</div>
+                            <label style="font-size:large">Mô tả thông số kĩ thuật:</label>
+                            @Html.Raw(Model.Desc)
+                        </div>
+                        <br />
+                        <div>
+                            <label>Số lượng hiện có:</label>
+                            <h2>@Model.Amount</h2>
+                        </div>
                         <ul class="pro__dtl__prize">
                             @if (Model.ProductType == (int)ProductType.Active)
                             {
-                                <li>$@Model.Price</li>
-                            } else
+                                <li>
+                                    <label>Giá sản phẩm:</label>
+                                    $@Model.Price
+                                </li>
+                            }
+                            else
                             {
                                 <li>Gia lien he</li>
                             }
 
                         </ul>
-                        
+
                         <div class="product-action-wrap">
-                            
+
                         </div>
                         <ul class="pro__dtl__btn">
                             <li class="buy__now__btn"><a asp-route-id="@Model.Id" asp-controller="cart" asp-action="Add">Mua ngay</a></li>
-                           
+
                         </ul>
                         <div class="pro__social__share">
                             <h2>Share :</h2>
@@ -89,7 +101,91 @@
                     </div>
                 </div>
             </div>
+            <hr/>
+            <h1>Sản phẩm liên quan</h1>
+
+
+            <div class="row">
+                <div class="product__list another-product-style">
+                    <!-- Start Single Product -->
+                    @foreach (var item in Mac4)
+                    {
+                        <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12">
+                            <div class="product foo">
+                                <div class="product__inner">
+                                    <div class="pro__thumb">
+                                        <a asp-route-id="@item.Id" asp-action="DetailProduct">
+                                            <img src="~/img/@item.Avatar" alt="product images" width="270" height="270">
+                                        </a>
+                                    </div>
+                                    <div class="product__hover__info">
+                                        <ul class="product__action">
+                                            <li><a title="Quick View" class="quick-view modal-view detail-link" asp-action="DetailProduct" asp-route-id="@item.Id"><span class="ti-plus"></span></a></li>
+                                            <li><a title="Add TO Cart" asp-route-id="@item.Id" asp-action="Add" asp-controller="Cart"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product__details">
+                                    <h2><a asp-route-id="@item.Id" asp-action="DetailProduct">@item.Name</a></h2>
+                                    <ul class="product__price">
+
+                                        <li class="new__price">$@item.Price</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- End Single Product -->
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="product__list another-product-style">
+                    <!-- Start Single Product -->
+                    @foreach (var item in Dell4)
+                    {
+                        <div class="col-md-3 single__pro col-lg-3 cat--1 col-sm-4 col-xs-12">
+                            <div class="product foo">
+                                <div class="product__inner">
+                                    <div class="pro__thumb">
+                                        <a asp-route-id="@item.Id" asp-action="DetailProduct">
+                                            <img src="~/img/@item.Avatar" alt="product images" width="270" height="270">
+                                        </a>
+                                    </div>
+                                    <div class="product__hover__info">
+                                        <ul class="product__action">
+                                            <li><a title="Quick View" class="quick-view modal-view detail-link" asp-action="DetailProduct" asp-route-id="@item.Id"><span class="ti-plus"></span></a></li>
+                                            <li><a title="Add TO Cart" asp-route-id="@item.Id" asp-action="Add" asp-controller="Cart"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product__details">
+                                    <h2><a asp-route-id="@item.Id" asp-action="DetailProduct">@item.Name</a></h2>
+                                    <ul class="product__price">
+
+                                        <li class="new__price">$@item.Price</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- End Single Product -->
+
+                </div>
+            </div>
         </div>
+
+
+      
+
     </section>
+
+    
 
 

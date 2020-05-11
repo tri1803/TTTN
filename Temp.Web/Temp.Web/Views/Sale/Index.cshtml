@@ -1,4 +1,4 @@
-@model IEnumerable<SaleDto>
+﻿@model IEnumerable<SaleDto>
 @{
     ViewBag.Title = "Sale";
     Layout = "_AdminLayout";
@@ -6,6 +6,7 @@
 
 <div class="content-header">
     <div class="container-fluid">
+        <h1>Giảm giá</h1>
         <div class="row mb-2 container-fluid">
             <a asp-action="Create" class="btn btn-success"><i class="fas fa-plus"></i></a>
         </div>
@@ -15,15 +16,15 @@
                 <table class="table table-bordered table-hover" id="sale">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>ProductName</th>
-                        <th>Avatar</th>                                              
-                        <th>Create Date</th>
-                        <th>End Date</th>
-                        <th>Price Old</th>
-                        <th>Price New</th>
-                        <th>Desc</th>
-                        <th>Type</th>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Hình ảnh</th>                                              
+                        <th>Ngày bắt đầu</th>
+                        <th>Ngày kết thúc</th>
+                        <th>Giá cũ</th>
+                        <th>Giá mới</th>
+                        <th>Mô tả sale</th>
+                        <th>Loại</th>
                     </tr>
                     </thead>
                     <tbody>

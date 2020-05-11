@@ -1,0 +1,175 @@
+﻿@model CartDetail
+@{
+    ViewData["Title"] = "ShowDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class='wrapper'>
+    <header style="box-sizing: border-box;margin-top: 1rem;">
+        <div style="box-sizing: border-box;padding: 12px 0px;">
+            <div style="box-sizing: border-box;max-width: 1200px;padding: 0 !important;margin-right: auto; margin-left: auto;">
+                <div style="box-sizing: border-box;display: flex;">
+                    <div style="box-sizing: border-box;width: 80%;margin-left: 10%;">
+                        <div style="box-sizing: border-box;display: flex;width: 100%;align-items:center;">
+                            <div style="box-sizing: border-box;position: relative;padding-right: 10px;padding-left: 10px;display: inline-table;width: 30%;">
+                                <h1 style="box-sizing: border-box;margin: 0;">
+                                    <a href='index-desktop.html'>
+                                        <img alt='' src='~/images/tcomputer.png'>
+                                    </a>
+                                </h1>
+                                <div style="box-sizing: border-box;font-size: 13px;color: #1b2367;">
+                                    Tin Tưởng - Tiện Lợi - Nhanh Chóng
+                                </div>
+                            </div>
+                            <div style="box-sizing: border-box;display: inline-table;width: 70%;padding-right: 10px;padding-left: 10px;">
+                                <h3 style="box-sizing: border-box;margin-bottom: .5rem;font-size: 18px;font-weight: 600;">HỆ THỐNG BÁN BÁN LAPTOP T-COMPUTER</h3>
+                                <div>Hỗ trợ khách hàng 8h-22h</div>
+                                <div>Phone: 0985800465 hoặc truy cập: http://tcomputer.com.vn</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div style="box-sizing: border-box;max-width: 1200px;padding: 0 !important;margin-right: auto; margin-left: auto;">
+            <div style="box-sizing: border-box;display: flex;">
+                <div style="box-sizing: border-box;width: 80%;margin-left: 10%;">
+                    <div style="box-sizing: border-box;display: table;margin: 1.5rem 0;width: 100%;">
+                        <div style="box-sizing: border-box;padding:0 10px;display: inline-table;width: 20%;">
+                            <p style="margin: 0;padding-bottom: .5rem;">Đơn hàng:</p>
+                            <p style="margin: 0;padding-bottom: .5rem;">Thanh toán:</p>
+                            <p style="margin: 0;padding-bottom: .5rem;">Trạng thái:</p>
+                        </div>
+                        <div style="box-sizing: border-box;padding:0 10px;display: inline-table;width: 80%;">
+                            <p style="margin: 0;padding-bottom: .5rem;">
+                                <b style="font-weight:600">ORD00.@Model.Id (Ngày: @Model.Date)</b>
+                            </p>
+                            <p style="margin: 0;padding-bottom: .5rem;">
+                                <b style="font-weight:600">Thanh toán tiền mặt khi nhận hàng</b>
+                            </p>
+                            <p style="margin: 0;padding-bottom: .5rem;">
+                                <b style="font-weight:600">
+                                    @switch (Model.Status)
+                                    {
+                                        case 0: 
+                                            <p>Chờ giao hàng</p>
+                                            break;
+                                        case 1:
+                                            <p>Đang giao hàng</p>
+                                            break;
+                                        case 2:
+                                            <p>Đã giao hàng</p>
+                                            break;
+                                    }
+                                    </b>
+                                    </p>
+                                </div>
+                            </div>
+                            <div style="box-sizing: border-box;padding: 1.5rem;background: #f4f4f4;margin-bottom: 2rem; width: 100%;">
+                                <div style="display: table;width: 100%;">
+                                    <div style="box-sizing: border-box;padding:0 10px;display: inline-table;width: 50%;">
+                                        <h3 style="font-size: 18px;margin-bottom: 1rem;font-weight: 600;margin-top: 0;">Thông tin thanh toán</h3>
+                                        <div>
+                                            <table style="width:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align: text-bottom;">Khách hàng:</td>
+                                                        <td style="vertical-align: text-bottom;">
+                                                            <b style="font-weight:600">@Model.User.LastName @Model.User.FirstName</b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align: text-bottom;">Địa chỉ:</td>
+                                                        <td style="vertical-align: text-bottom;">
+                                                            <b style="font-weight:600">@Model.User.Address</b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;vertical-align: text-bottom;">Số đt:</td>
+                                                        <td style="vertical-align: text-bottom;">
+                                                            <b style="font-weight:600">@Model.User.Phone</b>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div style="box-sizing: border-box;padding:0 10px;display: inline-table;width: 50%;">
+                                        <h3 style="font-size: 18px;margin-bottom: 1rem;font-weight: 600;margin-top: 0;">Thông tin giao hàng</h3>
+                                        <div>
+                                            <table style="width:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="vertical-align: text-bottom;">Tên:</td>
+                                                        <td style="vertical-align: text-bottom;">
+                                                            <b style="font-weight:600">@Model.User.LastName @Model.User.FirstName</b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="vertical-align: text-bottom;">SDT:</td>
+                                                        <td style="vertical-align: text-bottom;">
+                                                            <b style="font-weight:600">@Model.User.Phone</b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 20%;vertical-align: text-bottom;">Địa chỉ:</td>
+                                                        <td style="vertical-align: text-bottom;">
+                                                            <b style="font-weight:600">@Model.User.Address</b>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="box-sizing: border-box;display: table;width: 100%;">
+                                <div style="box-sizing: border-box;padding: 0 10px;display: inline-table;width: 25%;">
+                                    <div>Sản phẩm</div>
+
+                                </div>
+                                <div style="box-sizing: border-box;padding: 0 10px;display: inline-table;width: 25%;">
+                                    <div>Số lượng</div>
+                                </div>
+                                <div style="box-sizing: border-box;padding: 0 10px;display: inline-table;width: 25%;">
+                                    <div>Giá</div>
+                                </div>
+                                <div style="box-sizing: border-box;padding: 0 10px;display: inline-table;width: 25%;">
+                                    <div style="text-align: right;">Thành tiền</div>
+                                </div>
+                            </div>
+                            <div style="box-sizing: border-box;display: table;width: 100%;margin-top: 1rem;border-top: 1px solid #e7e7e7;padding-top: 1rem;">
+                                <div style="box-sizing: border-box;padding: 0 10px;display: inline-table;width: 25%;">
+                                    <h3 style="font-weight: normal;font-size: 14px;margin-bottom: .5rem;margin-top: 0;">@Model.Product.Name</h3>
+
+                                </div>
+                                <div style="box-sizing: border-box;padding: 0 10px;display: inline-table;width: 25%;">
+                                    <div>@Model.Amount</div>
+                                </div>
+                                <div style="box-sizing: border-box;padding: 0 10px;display: inline-table;width: 25%;">
+                                    <div>@Model.Price</div>
+                                </div>
+                                <div style="box-sizing: border-box;padding: 0 10px;display: inline-table;width: 25%;">
+                                    <div style="text-align: right;">@(Model.Amount * Model.Price)</div>
+                                </div>
+                            </div>
+                            <div style="box-sizing: border-box;display:table;width: 100%; margin-top: 1rem;border-top: 1px solid #e7e7e7;padding-top: 1rem;">
+                                <div style="box-sizing: border-box;width: 25%; padding:0 10px;margin-left: 50%;display: inline-table;">
+                                    <p style="margin: 0;padding-bottom: .5rem;">Phí vận chuyển: </p>
+                                    <p style="margin: 0;padding-bottom: .5rem;">Khuyến mãi:</p>
+                                    <p style="margin: 0;padding-bottom: .5rem;font-size:18px;">Tổng tiền:</p>
+                                </div>
+                                <div style="box-sizing: border-box;padding:0 10px;text-align:right;display: inline-table;    width: 25%;">
+                                    <p style="margin: 0;padding-bottom: .5rem;">0đ</p>
+                                    <p style="margin: 0;padding-bottom: .5rem;">0đ</p>
+                                    <p style="margin: 0;padding-bottom: .5rem;font-size:18px;font-weight: 600;">@(Model.Amount * Model.Price)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+

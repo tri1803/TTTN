@@ -8,7 +8,7 @@ namespace Temp.Web.Controllers
     /// <summary>
     /// admin controller
     /// </summary>
-    [Authorize(Policy = Constants.Role.Manager)]
+    [Authorize(Policy = Constants.Role.Shipper)]
     public class AdminController : Controller
     {
         private readonly ICategoryService _categoryService;
@@ -45,7 +45,7 @@ namespace Temp.Web.Controllers
             int[] arr2 = new int[12];
             for (int i = 0; i < 12; i++)
             {
-                arr2[i] = _cartService.GetTotalInMonth(i + 1);
+                arr2[i] = _cartService.GetCountInMonth(i + 1);
             }
             ViewBag.total2 = arr2;
 

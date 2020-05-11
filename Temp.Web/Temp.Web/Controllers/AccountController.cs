@@ -61,7 +61,7 @@ namespace Temp.Web.Controllers
                 var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
                 await HttpContext.SignInAsync(principal);                
-                if (user.RoleId == (int)Role.Admin || user.RoleId == (int)Role.Manager)
+                if (user.RoleId == (int)Role.Admin || user.RoleId == (int)Role.Manager || user.RoleId == (int)Role.Shipper)
                 {
                     return RedirectToAction("Index", "Admin");
                 }
@@ -100,16 +100,19 @@ namespace Temp.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(CreateAccDto accDto)
         {
-            if (!_account.CheckAccount(accDto))
-            {
-                ModelState.AddModelError(string.Empty, MessageResource.AccountValid);
-            }
-            else if (!accDto.Password.Equals(accDto.ConfirmPass))
-            {
-                ModelState.AddModelError(string.Empty, MessageResource.Compare);
-            }
             if (ModelState.IsValid)
             {
+                if (!_account.CheckAccount(accDto))
+                {
+                    ModelState.AddModelError(string.Empty, MessageResource.AccountValid);
+                    return View(accDto);
+                }
+
+                if (!accDto.Password.Equals(accDto.ConfirmPass))
+                {
+                    ModelState.AddModelError(string.Empty, MessageResource.Compare);
+                    return View(accDto);
+                }
                 _account.CreateAccount(accDto);
                 return RedirectToAction("LogIn", "Account");
             }

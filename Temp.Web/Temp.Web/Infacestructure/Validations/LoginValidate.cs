@@ -2,7 +2,7 @@
 using Temp.Common.Resources;
 using Temp.Service.DTO;
 
-namespace Temp.Web.Infrastructure.Validations
+namespace Temp.Web.Infacestructure.Validations
 {
     public class LoginValidate : AbstractValidator<LogInDto>
     {

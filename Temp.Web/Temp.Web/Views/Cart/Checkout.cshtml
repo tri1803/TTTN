@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Checkout";
     Layout = "_Layout";
+    var cart = (List<CartItemDto>)ViewBag.oder;
 }
 <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(/page/images/bg/2.jpg) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
@@ -62,7 +63,7 @@
                                 </p>
                                 <br />
                                 <input type="submit" value="Mua hàng" class="btn btn-primary" />
-                                <a class="btn btn-warning" asp-action="home" asp-controller="home">Ve trang chu</a>
+                                <a class="btn btn-warning" asp-action="Checkout" asp-controller="Cart" asp-route-id="">Về trang chủ</a>
                             </div>
                             
                         </form>

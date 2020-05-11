@@ -28,12 +28,15 @@ namespace Temp.Web.Controllers
             ViewBag.NewProduct = _productService.GetProductNews_10();
             ViewBag.phukien = _productService.Get10Phukien();
             ViewBag.productInActive = _productService.GetProductInactive();
+            
             return View();
         }
 
         public IActionResult DetailProduct(int id)
         {
             var product =  _productService.GetProductEditById(id);
+            ViewBag.get4Mac = _productService.Get4Mac();
+            ViewBag.get4Dell = _productService.Get4Dell();
             return View(product);
         }
 

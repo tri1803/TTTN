@@ -23,5 +23,7 @@ namespace Temp.Service.Service
         int GetTotalInMonth(int month);
 
         int GetCountInMonth(int month);
+
+        CartDetail GetById(int id);
     }
 }

@@ -10,7 +10,8 @@ using Temp.Web.Infacestructure.Helpers;
 
 namespace Temp.Web.Controllers {
     [Authorize]
-    public class CartController : Controller {
+    public class CartController : Controller 
+    {
 
         private readonly IProductService _productService;
         private readonly IUnitofWork _unitofWork;
@@ -52,14 +53,14 @@ namespace Temp.Web.Controllers {
             return RedirectToAction("Index", "Cart");
         }
 
-        [HttpPost]
-        public IActionResult Update(int id, CartItemDto cartItem)
+        //[HttpPost]
+        public JsonResult Update(int id, int count)
         {
             List<CartItemDto> cart = SessionHelper.GetObjectFromJson<List<CartItemDto>>(HttpContext.Session, "cart");
             int index = isExist(id);
-            cart[index].Amount += cartItem.Amount;
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
-            return RedirectToAction("Index", "Cart");
+            cart[index].Amount = count;           
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);           
+            return  new JsonResult(cart);
         }
 
         public IActionResult Delete(int id)
@@ -124,10 +125,24 @@ namespace Temp.Web.Controllers {
                 product.Amount -= item.Amount;
                 _unitofWork.ProductBaseService.Update(product);
             }
-
             _unitofWork.Save();
+            ViewBag.oder = cart;
+            return RedirectToAction("ShowOrderDetail", "Cart");
+        }
+
+        [HttpGet]
+        public IActionResult ShowOrderDetail(int id)
+        {
+            List<CartItemDto> cart = SessionHelper.GetObjectFromJson<List<CartItemDto>>(HttpContext.Session, "cart");
+            var oder = _unitofWork.CartDetailBaseService.GetById(id);
             cart = null;
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            return View(oder);
+        }
+
+        [HttpPost]
+        public IActionResult ShowOrderDetail()
+        {
             return RedirectToAction();
         }
     }

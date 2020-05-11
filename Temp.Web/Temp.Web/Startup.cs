@@ -23,7 +23,7 @@ using System.Text;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using Temp.Service.DTO;
-using Temp.Web.Infrastructure.Validations;
+using Temp.Web.Infacestructure.Validations;
 
 namespace Temp.Web
 {
@@ -91,6 +91,8 @@ namespace Temp.Web
                 options.AddPolicy("Admin", policy => policy.RequireAssertion(context => context.User.IsInRole(Constants.Role.Admin)));
                 options.AddPolicy("Manager", policy => policy.RequireAssertion(context => 
                 context.User.IsInRole(Constants.Role.Manager) || context.User.IsInRole(Constants.Role.Admin)));
+                options.AddPolicy("Shipper", policy => policy.RequireAssertion(context =>
+                context.User.IsInRole(Constants.Role.Manager) || context.User.IsInRole(Constants.Role.Admin) || context.User.IsInRole(Constants.Role.Shipper)));
             });
             
             
@@ -98,6 +100,8 @@ namespace Temp.Web
             services.AddMvc(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation();
             services.AddTransient<IValidator<LogInDto>, LoginValidate>();
+            services.AddTransient<IValidator<CreateAccDto>, CreateAccValidate>();
+            services.AddTransient<IValidator<CreateProductDto>, CreateProductValidate>();
 
             services.AddCors(options =>
             {

@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Temp.Service.DTO;
 using Temp.Service.Service;
+using Temp.Common.Infrastructure;
 
 namespace Temp.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = Constants.Role.Admin)]
     public class NsxController : Controller
     {
         private readonly INsxService _nsxService;

@@ -51,14 +51,14 @@
                                         <tr>
                                             <td class="product-thumbnail"><a asp-route-id="@item.Product.Id" asp-controller="Home" asp-action="DetailProduct"><img src="~/img/@item.Product.Avatar" width="134" height="134" /></a></td>
                                             <td class="product-name"><a asp-route-id="@item.Product.Id" asp-controller="Home" asp-action="DetailProduct">@item.Product.Name</a></td>
-                                            <td class="product-price"><span class="amount">$@item.Product.Price</span></td>
+                                            <td class="product-price"><span id="amount">@item.Product.Price</span></td>
                                             <td class="product-quantity">
-
-                                                <input asp-for="@item.Amount"/>
+                                                <input type="hidden" asp-for="@item.Product.Id" id="Id"/>
+                                                <input type="number" name="count" value="@item.Amount" id="count" min="0"/>
 
                                             </td>
-                                            <td class="product-subtotal">$@(item.Amount * item.Product.Price)</td>
-                                            <td class="product-remove">                         
+                                            <td class="product-subtotal"><span id="total">@(item.Amount * item.Product.Price)</span></td>
+                                            <td class="product-remove">
                                                 <a asp-route-id="@item.Product.Id" asp-action="delete" class="btn btn-danger"><i class="fas fa-times" style="color:#fff"></i></a>
                                             </td>
                                         </tr>
@@ -71,7 +71,7 @@
                         <div class="row">
                             <div class="col-md-8 col-sm-7 col-xs-12">
                                 <div class="buttons-cart">
-                                    <input type="submit" value="Cập nhật số lượng"/>
+                                    <input type="button" value="Cập nhật số lượng" id="UpdateCount"/>
                                     <a asp-controller="home" asp-action="home">Tiếp tục mua sắm</a>
                                 </div>
 
@@ -99,9 +99,43 @@
             </div>
         </div>
     </div>
+}
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#UpdateCount').click(function () {
+                
+                var id = $("#Id").val();
+                var count = $("#count").val();
+                
+                var gia = $("#amount").html();
+                
+                $.ajax({
+                    url: '@Url.Action("Update","Cart")',
+                    type: 'Get',                   
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+                    data:
+                    {
+                        id: id,
+                        count: count
+                    }
+                    ,
+                    success: function (data) {
+                        $("#total").text(count * gia);
+                        
+                        return data;
+                    },
+                    error: function () {
+                        alert("Error");
 
+                    }
+                })
+            });
 
-
+        });
+    </script>
 }
 
 

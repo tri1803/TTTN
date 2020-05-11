@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Temp.DataAccess.Data
@@ -11,17 +12,17 @@ namespace Temp.DataAccess.Data
     {
       
         public int Id { get; set; }
-        
-      
+
+        [Required(ErrorMessage = "Vui lòng nhập!")]
         public string Name { get; set; }
-        
-     
+
+        [Required(ErrorMessage = "Vui lòng nhập!")]
         public int? Amount { get; set; }
-        
-       
+
+        [Required(ErrorMessage = "Vui lòng nhập!")]
         public int? Price { get; set; }
         
-        
+        [Required(ErrorMessage = "Vui lòng nhập!")]
         [Column(TypeName = "ntext")]
         public string Desc { get; set; }
         

@@ -1,4 +1,4 @@
-@using System.Collections.Specialized
+﻿@using System.Collections.Specialized
 @model SaleDto
 @{
     ViewData["Title"] = "Create";
@@ -7,7 +7,7 @@
 
 <div class="content-header">
     <div class="container-fluid">
-        <h2>Create sale</h2>
+        <h2>Tạo đợt giảm giá</h2>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-12">
@@ -17,25 +17,25 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="EndDate" class="control-label"></label>
+                                    <label asp-for="EndDate" class="control-label">Ngày kết thúc</label>
                                     <input asp-for="EndDate" class="form-control" />                                  
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="PriceOld" class="control-label"></label>
+                                    <label asp-for="PriceOld" class="control-label">Giá cũ</label>
                                     <input asp-for="PriceOld" class="form-control" id="@Model.ProductId"/>                                   
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="PriceNow" class="control-label"></label>
+                                    <label asp-for="PriceNow" class="control-label">Giá mới</label>
                                     <input asp-for="PriceNow" class="form-control" />                                   
                                 </div>
                             </div>
                              <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="control-label">Product</label>
+                                    <label class="control-label">Sản phẩm</label>
                                     <select class="form-control form-control-md" asp-for="ProductId">
                                         @foreach (var item in Model.Products)
                                         {
@@ -48,7 +48,7 @@
                             
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label asp-for="Desc" class="control-label"></label>
+                                    <label asp-for="Desc" class="control-label">Mô tả sale</label>
                                    <textarea id="ckeditor" asp-for="Desc" class="form-control"></textarea>
                                 </div>
                             </div>
@@ -58,10 +58,10 @@
                             
                             <div class="form-row">
                                 <div class="form-group col-md-2">
-                                    <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                                    <input type="submit" value="Tạo" class="btn btn-primary btn-block" />
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Return</a>
+                                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Trở về</a>
                                 </div>
                                 <div class="form-group col-md-8"></div>
                                 </div>
